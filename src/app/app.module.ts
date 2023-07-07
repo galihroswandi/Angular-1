@@ -3,14 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './Components/app.component';
-import { BannerLogin } from './Components/BannerLogin/BannerLogin.component';
-import { Login } from './Components/Login/Login.component';
-import { Header } from './Components/Header/Header.component';
-import { FormLogin } from './Components/Form/Form.component';
-import { InputForm } from './Components/InputForm/InputForm.component';
-import { RegisterComponent } from './Components/Register/Register.component';
-import { FooterComponent } from './Components/Footer/Footer.component';
-import { LinkFooterComponent } from './Components/Footer/LinkFooter/LinkFooter.component';
+import { BannerLogin } from './Components/Elements/BannerLogin/BannerLogin.component';
+import { Login } from './Components/Fragments/Login/Login.component';
+import { Header } from './Components/Elements/Header/Header.component';
+import { FormLogin } from './Components/Fragments/Form/Form.component';
+import { InputForm } from './Components/Elements/InputForm/InputForm.component';
+import { RegisterComponent } from './Components/Fragments/Register/Register.component';
+import { FooterComponent } from './Components/Elements/Footer/Footer.component';
+import { LinkFooterComponent } from './Components/Elements/Footer/LinkFooter/LinkFooter.component';
 
 @NgModule({
   declarations: [
