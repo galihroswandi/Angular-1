@@ -1,4 +1,9 @@
-<div class="grid lg:grid-cols-2 max-h-[100vh]. w-full overflow-y-hidden">
+<div
+  class="grid lg:grid-cols-[minmax(0,_.9fr)_.45fr] max-h-[100vh]. w-full overflow-y-hidden"
+>
   <BannerLogin />
-  <Login />
+  <div class="relative">
+    <Login />
+    <app-register />
+  </div>
 </div>

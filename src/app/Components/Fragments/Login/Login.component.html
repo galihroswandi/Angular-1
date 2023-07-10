@@ -1,17 +1,19 @@
 <section
-  class="py-5 lg:py-2.5 xl:py-5 min-h-fit lg:h-screen w-full sm:px-10 px-5 relative"
+  class="py-5 lg:py-2.5 xl:py-5 min-h-fit lg:h-screen w-full lg:mx-auto sm:px-10 px-5 relative"
 >
-  <img
-    [src]="logo_name"
-    alt="Logo Image"
-    class="mt-2 lg:mt-1 md:mt-0 w-10 mb-6 lg:mb-2.5 xl:mb-7"
-  />
-  <Header
-    title="Login"
-    classname="text-3xl md:text-5xl lg:text-4xl mb-4"
-    classP="md:text-base"
-  ></Header>
-  <FormLogin />
-  <Register />
+  <div class="lg:max-w-[17.5rem] mx-auto">
+    <img
+      [src]="logo_name"
+      alt="Logo Image"
+      class="mt-2 lg:mt-1 md:mt-0 w-10 mb-6 lg:mb-2.5 xl:mb-7"
+    />
+    <Header
+      title="Login"
+      classname="text-3xl md:text-5xl lg:text-3xl mb-4"
+      classP="md:text-base"
+    ></Header>
+    <FormLogin />
+    <Register />
+  </div>
   <Footer></Footer>
 </section>

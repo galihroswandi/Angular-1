@@ -1,11 +1,38 @@
-<div class="border border-blue-100 rounded-md py-7 px-6 mt-10 lg:mt-3 xl:mt-10">
-  <Header
-    title="Register"
-    classname="text-xl leading-3 text-slate-700"
-    classP="font-light text-sm"
-  ></Header>
-  <a
-    class="py-2 text-sm bg-blue-50 text-blue-600 mt-6 w-full inline-block cursor-pointer text-center rounded-md hover:bg-blue-100 hover:text-blue-500 transition duration-500"
-    >Create account</a
-  >
+<div
+  class="py-5 lg:py-2.5 xl:py-5 lg:h-screen lg:mx-auto px-10 absolute top-0 -translate-y-[90vh] w-full min-h-screen bg-white hidden justify-center opacity-0 items-start transition-all duration-500"
+  id="target-slide-register"
+>
+  <main class="mt-36 lg:max-w-[17.5rem] mx-auto">
+    <h1 class="text-3xl font-semibold text-slate-800">Register</h1>
+    <form
+      class="flex flex-col gap-2 xl:gap-4 mt-5 lg:mt-3 xl:mt-5 w-full"
+      (submit)="onSubmit($event)"
+    >
+      <p
+        *ngIf="this.authUtils.error"
+        class="bg-red-200 py-1 text-center rounded-sm"
+      >
+        <i class="text-slate-800 text-sm text-center">Register Gagal</i>
+      </p>
+      <Input-form name="email" type="email" placeholder="example@gmail.com" />
+      <Input-form name="password" type="password" placeholder="******" />
+      <button
+        type="submit"
+        class="mt-4 bg-blue-600 py-1.5 text-sm text-white rounded-md"
+      >
+        <span *ngIf="this.authUtils.loading">Processing...</span>
+        <span *ngIf="!this.authUtils.loading">Register</span>
+      </button>
+      <p class="text-sm font-light text-center">
+        Already have an account?
+        <button
+          type="button"
+          class="text-blue-600 hover:underline"
+          (click)="hideRegister()"
+        >
+          Login
+        </button>
+      </p>
+    </form>
+  </main>
 </div>

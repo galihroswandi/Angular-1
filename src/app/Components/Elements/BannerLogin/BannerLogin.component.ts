@@ -5,5 +5,5 @@ import { Component, NgModule } from '@angular/core';
   templateUrl: './BannerLogin.component.html',
 })
 export class BannerLogin {
-  img_url = './assets/Image sidebar.png';
+  img_url = './assets/bg.png';
 }
