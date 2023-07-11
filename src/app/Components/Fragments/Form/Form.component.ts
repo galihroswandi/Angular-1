@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import axios from 'axios';
 import { AuthServices } from 'src/app/services/auth.service';
 import { AuthUtil } from 'src/app/utils/auth.util';
 
@@ -10,15 +11,17 @@ export class FormLogin {
   name1 = 'email';
   password = 'password';
 
-  constructor(private auth: AuthServices, public authUtils: AuthUtil) {}
+  constructor(private auth: AuthServices, public authUtils: AuthUtil) {
+    console.log({ cookie: document.cookie });
+  }
 
   onSubmit(event: any) {
     event.preventDefault();
     this.authUtils.loading = true;
     this.authUtils.disabled = true;
 
-    const data = {
-      username: event.target.elements[this.name1].value,
+    const data: { email: string; password: string } = {
+      email: event.target.elements[this.name1].value,
       password: event.target.elements[this.password].value,
     };
 
@@ -27,8 +30,9 @@ export class FormLogin {
       .then((res: any) => {
         this.authUtils.loading = false;
         this.authUtils.disabled = false;
-        localStorage.setItem('token', res.data.token);
+
         alert('Login Berhasil');
+        console.info(res.data);
 
         event.target.elements[this.name1].value = '';
         event.target.elements[this.password].value = '';
@@ -37,6 +41,13 @@ export class FormLogin {
         this.authUtils.loading = false;
         this.authUtils.disabled = false;
         this.authUtils.error = true;
+        console.log(err);
       });
+  }
+
+  handleLogout() {
+    this.auth.getUser().then((res) => {
+      console.log(res);
+    });
   }
 }

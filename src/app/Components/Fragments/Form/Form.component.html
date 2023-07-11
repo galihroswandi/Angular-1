@@ -7,10 +7,10 @@
     class="bg-red-200 py-1 text-center rounded-sm"
   >
     <i class="text-slate-800 text-sm text-center"
-      >Incorrect username or password.</i
+      >Incorrect email or password.</i
     >
   </p>
-  <Input-form name="email" type="text" placeholder="example@gmail.com" />
+  <Input-form name="email" type="email" placeholder="example@gmail.com" />
   <Input-form name="password" type="password" placeholder="******" />
   <button
     [disabled]="this.authUtils.disabled"
@@ -24,4 +24,5 @@
     class="cursor-pointer hover:underline place-self-end font-light text-xs text-slate-800 mt-1"
     >Did you forget your password?</a
   >
+  <button type="button" (click)="handleLogout()">Logout</button>
 </form>

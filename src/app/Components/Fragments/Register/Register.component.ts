@@ -17,8 +17,8 @@ export class RegisterComponent {
     this.authUtils.loading = true;
     this.authUtils.disabled = true;
 
-    const data = {
-      username: event.target.elements[this.name1].value,
+    const data: { email: string; password: string } = {
+      email: event.target.elements[this.name1].value,
       password: event.target.elements[this.password].value,
     };
 
@@ -27,6 +27,8 @@ export class RegisterComponent {
       .then((res) => {
         this.authUtils.loading = false;
         this.authUtils.disabled = false;
+
+        console.log(res);
 
         event.target.elements[this.name1].value = '';
         event.target.elements[this.password].value = '';

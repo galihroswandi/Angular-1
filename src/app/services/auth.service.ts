@@ -3,15 +3,17 @@ import axios from 'axios';
 
 @Injectable({ providedIn: 'root' })
 export class AuthServices {
-  private apiUrl = 'https://fakestoreapi.com';
+  private apiUrl = 'http://localhost:3000';
 
   login(data: object): Promise<any> {
-    return axios.post(`${this.apiUrl}/auth/login`, data);
+    return axios.post(`${this.apiUrl}/login`, data);
   }
 
   createUser(data: object): Promise<any> {
-    return new Promise((resolve, reject) => {
-      resolve('oke');
-    });
+    return axios.post(`${this.apiUrl}/register/admin`, data);
+  }
+
+  getUser() {
+    return axios.post(`${this.apiUrl}/logout`);
   }
 }
