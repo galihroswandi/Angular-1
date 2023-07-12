@@ -7,15 +7,13 @@ import { AuthUtil } from 'src/app/utils/auth.util';
   templateUrl: './Register.component.html',
 })
 export class RegisterComponent {
-  name1 = 'email';
-  password = 'password';
+  name1 = 'Email';
+  password = 'Password';
 
   constructor(private auth: AuthServices, public authUtils: AuthUtil) {}
 
   onSubmit(event: any): void {
     event.preventDefault();
-    this.authUtils.loading = true;
-    this.authUtils.disabled = true;
 
     const data: { email: string; password: string } = {
       email: event.target.elements[this.name1].value,
@@ -25,18 +23,13 @@ export class RegisterComponent {
     this.auth
       .createUser(data)
       .then((res) => {
-        this.authUtils.loading = false;
-        this.authUtils.disabled = false;
-
+        this.authUtils.actionAfterAuth(false, false, false);
         console.log(res);
-
-        event.target.elements[this.name1].value = '';
-        event.target.elements[this.password].value = '';
+        this.authUtils.removeValueForm(event, this.name1, this.password);
       })
       .catch((err) => {
-        this.authUtils.loading = false;
-        this.authUtils.disabled = false;
-        this.authUtils.error = true;
+        this.authUtils.actionAfterAuth(true, false, false);
+        this.authUtils.removeValueForm(event, this.name1, this.password);
       });
   }
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import axios from 'axios';
 import { AuthServices } from 'src/app/services/auth.service';
 import { AuthUtil } from 'src/app/utils/auth.util';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'FormLogin',
@@ -11,14 +11,14 @@ export class FormLogin {
   name1 = 'email';
   password = 'password';
 
-  constructor(private auth: AuthServices, public authUtils: AuthUtil) {
-    console.log({ cookie: document.cookie });
-  }
+  constructor(
+    private auth: AuthServices,
+    public authUtils: AuthUtil,
+    private router: Router
+  ) {}
 
   onSubmit(event: any) {
     event.preventDefault();
-    this.authUtils.loading = true;
-    this.authUtils.disabled = true;
 
     const data: { email: string; password: string } = {
       email: event.target.elements[this.name1].value,
@@ -28,19 +28,15 @@ export class FormLogin {
     this.auth
       .login(data)
       .then((res: any) => {
-        this.authUtils.loading = false;
-        this.authUtils.disabled = false;
+        this.authUtils.actionAfterAuth(false, false, false);
+        this.authUtils.removeValueForm(event, this.name1, this.password);
 
         alert('Login Berhasil');
-        console.info(res.data);
-
-        event.target.elements[this.name1].value = '';
-        event.target.elements[this.password].value = '';
+        this.router.navigate(['/beranda']);
       })
       .catch((err: object) => {
-        this.authUtils.loading = false;
-        this.authUtils.disabled = false;
-        this.authUtils.error = true;
+        this.authUtils.actionAfterAuth(true, false, false);
+        this.authUtils.removeValueForm(event, this.name1, this.password);
         console.log(err);
       });
   }

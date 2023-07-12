@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './Components/app.component';
@@ -13,8 +14,27 @@ import { FooterComponent } from './Components/Elements/Footer/Footer.component';
 import { LinkFooterComponent } from './Components/Elements/Footer/LinkFooter/LinkFooter.component';
 import { RegisterButtonComponent } from './Components/Elements/RegisterButton/Register.component';
 import { RegisterComponent } from './Components/Fragments/Register/Register.component';
+import { HomePage } from './Components/Pages/Home/Home.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LoginPage } from './Components/Pages/Login/Login.component';
 
 @NgModule({
+  imports: [
+    AppRoutingModule,
+    BrowserModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    RouterModule.forChild([
+      {
+        path: 'login',
+        component: LoginPage,
+      },
+      {
+        path: 'beranda',
+        component: HomePage,
+      },
+    ]),
+  ],
   declarations: [
     AppComponent,
     BannerLogin,
@@ -26,8 +46,10 @@ import { RegisterComponent } from './Components/Fragments/Register/Register.comp
     LinkFooterComponent,
     RegisterButtonComponent,
     RegisterComponent,
+    HomePage,
+    LoginPage,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+
   providers: [],
   bootstrap: [AppComponent],
 })
