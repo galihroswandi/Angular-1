@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { CookiesUtils } from '../utils/cookies.util';
+import { environments } from 'src/environments';
 
 @Injectable({ providedIn: 'root' })
 export class AuthServices {
   constructor(private getCookies: CookiesUtils) {}
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = environments.API_URL;
 
   login(data: object): Promise<any> {
     return axios.post(`${this.apiUrl}/login`, data, {
@@ -20,7 +21,7 @@ export class AuthServices {
     return axios.post(`${this.apiUrl}/register/admin`, data);
   }
 
-  logout():Promise<any> {
+  logout(): Promise<any> {
     return axios.post(`${this.apiUrl}/logout`, this.getCookies.getCookies());
   }
 
