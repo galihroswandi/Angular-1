@@ -30,7 +30,7 @@ import { LoginPage } from './Components/Pages/Login/Login.component';
         component: LoginPage,
       },
       {
-        path: 'beranda',
+        path: '',
         component: HomePage,
       },
     ]),

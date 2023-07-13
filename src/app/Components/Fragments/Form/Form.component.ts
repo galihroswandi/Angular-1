@@ -32,18 +32,12 @@ export class FormLogin {
         this.authUtils.removeValueForm(event, this.name1, this.password);
 
         alert('Login Berhasil');
-        this.router.navigate(['/beranda']);
+        this.router.navigate(['/']);
       })
       .catch((err: object) => {
         this.authUtils.actionAfterAuth(true, false, false);
         this.authUtils.removeValueForm(event, this.name1, this.password);
         console.log(err);
       });
-  }
-
-  handleLogout() {
-    this.auth.getUser().then((res) => {
-      console.log(res);
-    });
   }
 }

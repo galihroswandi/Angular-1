@@ -24,10 +24,11 @@ export class RegisterComponent {
       .createUser(data)
       .then((res) => {
         this.authUtils.actionAfterAuth(false, false, false);
-        console.log(res);
+        alert('User created !');
         this.authUtils.removeValueForm(event, this.name1, this.password);
+        this.hideRegister();
       })
-      .catch((err) => {
+      .catch((err) => { 
         this.authUtils.actionAfterAuth(true, false, false);
         this.authUtils.removeValueForm(event, this.name1, this.password);
       });
