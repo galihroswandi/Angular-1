@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './Components/app.component';
@@ -25,16 +24,6 @@ import { AuthComponent } from './Components/Templates/auth/auth.template.compone
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forChild([
-      {
-        path: 'login',
-        component: LoginPage,
-      },
-      {
-        path: '',
-        component: HomePage,
-      },
-    ]),
   ],
   declarations: [
     AppComponent,
