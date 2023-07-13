@@ -8,16 +8,16 @@ import { AuthUtil } from 'src/app/utils/auth.util';
 })
 export class RegisterComponent {
   name1 = 'Email';
-  password = 'Password';
+  name2 = 'Password';
 
   constructor(private auth: AuthServices, public authUtils: AuthUtil) {}
 
-  onSubmit(event: any): void {
+  startRegister(event: any): void {
     event.preventDefault();
 
     const data: { email: string; password: string } = {
       email: event.target.elements[this.name1].value,
-      password: event.target.elements[this.password].value,
+      password: event.target.elements[this.name2].value,
     };
 
     this.auth
@@ -25,16 +25,17 @@ export class RegisterComponent {
       .then((res) => {
         this.authUtils.actionAfterAuth(false, false, false);
         alert('User created !');
-        this.authUtils.removeValueForm(event, this.name1, this.password);
+        this.authUtils.removeValueForm(event, this.name1, this.name2);
         this.hideRegister();
       })
-      .catch((err) => { 
+      .catch((err) => {
         this.authUtils.actionAfterAuth(true, false, false);
-        this.authUtils.removeValueForm(event, this.name1, this.password);
+        this.authUtils.removeValueForm(event, this.name1, this.name2);
       });
   }
 
   hideRegister() {
+    this.authUtils.actionAfterAuth(false, false, false);
     const slideRegister = document.getElementById('target-slide-register');
     slideRegister?.classList.replace('translate-y-0', '-translate-y-[90vh]');
     slideRegister?.classList.replace('opacity-1', 'opacity-0');

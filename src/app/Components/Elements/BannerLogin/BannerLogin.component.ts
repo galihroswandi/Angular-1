@@ -1,7 +1,7 @@
-import { Component, NgModule } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'BannerLogin',
+  selector: 'app-banner-login',
   templateUrl: './BannerLogin.component.html',
 })
 export class BannerLogin {

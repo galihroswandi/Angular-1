@@ -4,35 +4,24 @@
 >
   <main class="mt-36 lg:max-w-[17.5rem] mx-auto">
     <h1 class="text-3xl font-semibold text-slate-800">Register</h1>
-    <form
-      class="flex flex-col gap-2 xl:gap-4 mt-5 lg:mt-3 xl:mt-5 w-full"
-      (submit)="onSubmit($event)"
-    >
-      <p
-        *ngIf="this.authUtils.error"
-        class="bg-red-200 py-1 text-center rounded-sm"
-      >
-        <i class="text-slate-800 text-sm text-center">Register Gagal</i>
-      </p>
-      <Input-form name="Email" type="email" placeholder="example@gmail.com" />
-      <Input-form name="Password" type="password" placeholder="******" />
+    <app-auth-template
+      (onSubmit)="startRegister($event)"
+      [name1]="this.name1"
+      [name2]="this.name2"
+      type1="email"
+      type2="password"
+      titleButton="Register"
+      errorText="Register Gagal"
+    />
+    <p class="text-sm font-light text-center mt-2">
+      Already have an account?
       <button
-        type="submit"
-        class="mt-4 bg-blue-600 py-1.5 text-sm text-white rounded-md"
+        type="button"
+        class="text-blue-600 hover:underline"
+        (click)="hideRegister()"
       >
-        <span *ngIf="this.authUtils.loading">Processing...</span>
-        <span *ngIf="!this.authUtils.loading">Register</span>
+        Login
       </button>
-      <p class="text-sm font-light text-center">
-        Already have an account?
-        <button
-          type="button"
-          class="text-blue-600 hover:underline"
-          (click)="hideRegister()"
-        >
-          Login
-        </button>
-      </p>
-    </form>
+    </p>
   </main>
 </div>

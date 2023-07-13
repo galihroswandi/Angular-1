@@ -8,7 +8,7 @@ import { AppComponent } from './Components/app.component';
 import { BannerLogin } from './Components/Elements/BannerLogin/BannerLogin.component';
 import { Login } from './Components/Fragments/Login/Login.component';
 import { Header } from './Components/Elements/Header/Header.component';
-import { FormLogin } from './Components/Fragments/Form/Form.component';
+import { FormLogin } from './Components/Fragments/FormLogin/Form.component';
 import { InputForm } from './Components/Elements/InputForm/InputForm.component';
 import { FooterComponent } from './Components/Elements/Footer/Footer.component';
 import { LinkFooterComponent } from './Components/Elements/Footer/LinkFooter/LinkFooter.component';
@@ -17,6 +17,7 @@ import { RegisterComponent } from './Components/Fragments/Register/Register.comp
 import { HomePage } from './Components/Pages/Home/Home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginPage } from './Components/Pages/Login/Login.component';
+import { AuthComponent } from './Components/Templates/auth/auth.template.component';
 
 @NgModule({
   imports: [
@@ -48,6 +49,7 @@ import { LoginPage } from './Components/Pages/Login/Login.component';
     RegisterComponent,
     HomePage,
     LoginPage,
+    AuthComponent,
   ],
 
   providers: [],

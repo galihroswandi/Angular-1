@@ -1,0 +1,17 @@
+<section>
+  <app-auth-template
+    (onSubmit)="onSubmit($event)"
+    [name1]="this.name1"
+    [name2]="this.name2"
+    type1="email"
+    type2="password"
+    titleButton="Login"
+    errorText="Incorrect email or password."
+  />
+  <div class="text-end">
+    <a
+      class="cursor-pointer hover:underline inline-block text-end font-light text-xs text-slate-800 mt-1"
+      >Did you forget your password?</a
+    >
+  </div>
+</section>
