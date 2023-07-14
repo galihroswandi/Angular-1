@@ -3,9 +3,8 @@ import Cookies from 'js-cookie';
 
 @Injectable({ providedIn: 'root' })
 export class CookiesUtils {
-  getCookies(): Object {
+  getCookies() {
     const cookieToken = Cookies.get('access_token');
-
     const data = {
       accessToken: cookieToken,
     };
