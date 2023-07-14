@@ -1,0 +1,144 @@
+<form
+  (submit)="insertEmployee($event)"
+  class="md:max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto bg-slate-100 py-5 px-10 mt-10 rounded-lg"
+>
+  <h1 class="text-lg mb-7 font-medium my-2.5 text-blue-600">IDENTITAS</h1>
+  <div class="flex flex-col gap-y-2.5">
+    <Input-form
+      [classname]="['sm:flex-row', 'sm:mb-5']"
+      [classInput]="['sm:w-[24rem]', 'lg:w-[30rem]']"
+      name="User-ID"
+      type="text"
+      placeholder="Type here..."
+    />
+    <Input-form
+      [classname]="['sm:flex-row', 'sm:mb-5']"
+      [classInput]="['sm:w-[24rem]', 'lg:w-[30rem]']"
+      name="Nama-Lengkap"
+      type="text"
+      placeholder="Type here..."
+    />
+    <Input-form
+      [classname]="['sm:flex-row', 'sm:mb-5']"
+      [classInput]="['sm:w-[24rem]', 'lg:w-[30rem]']"
+      name="Tempat-Lahir"
+      type="text"
+      placeholder="Type here..."
+    />
+    <Input-form
+      [classname]="['sm:flex-row', 'sm:mb-5']"
+      [classInput]="['sm:w-[24rem]', 'lg:w-[30rem]']"
+      name="Tanggal-Lahir"
+      type="date"
+      placeholder="Type here..."
+    />
+    <Input-form
+      [classname]="['sm:flex-row', 'sm:mb-5']"
+      [classInput]="['sm:w-[24rem]', 'lg:w-[30rem]']"
+      name="Alamat-Email"
+      type="email"
+      placeholder="Enter a valid email address"
+    />
+    <Input-form
+      [classname]="['sm:flex-row', 'sm:mb-5']"
+      [classInput]="['sm:w-[24rem]', 'lg:w-[30rem]']"
+      name="ID-Telegram"
+      type="text"
+      placeholder="Type here..."
+    />
+    <Input-form
+      [classname]="['sm:flex-row', 'sm:mb-5']"
+      [classInput]="['sm:w-[24rem]', 'lg:w-[30rem]']"
+      name="Nomor-Telepon"
+      type="number"
+      placeholder="628xxxxxxx"
+    />
+    <app-input-dropdown
+      name="Jenis-Identitas"
+      [options]="this.data.jenisIdentitas"
+    />
+    <Input-form
+      [classname]="['sm:flex-row', 'sm:mb-5']"
+      [classInput]="['sm:w-[24rem]', 'lg:w-[30rem]']"
+      name="Nomor-Identitas"
+      type="number"
+      placeholder="3xxxxxxx"
+    />
+    <app-input-dropdown
+      name="Status-Pernikahan"
+      [options]="this.data.statusPernikahan"
+    />
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:mb-5">
+      <label for="alamat">Alamat Tinggal Sesuai KTP</label>
+      <textarea
+        name="alamat"
+        id="alamat"
+        rows="4"
+        class="border border-slate-700 py-1.5 md:py-2.5 lg:py-1.5 px-3 text-sm outline-none rounded-md text-slate-700 bg-slate-50 w-full sm:w-[24rem] lg:w-[30rem]"
+      ></textarea>
+    </div>
+  </div>
+
+  <h1 class="text-lg mb-7 font-medium my-2.5 mt-8 text-blue-600">PENDIDIKAN</h1>
+  <div class="flex flex-col gap-y-2.5">
+    <app-input-dropdown
+      name="Pendidikan-Akhir"
+      [options]="this.data.pendidikanAkhir"
+    />
+    <Input-form
+      [classname]="['sm:flex-row', 'sm:mb-5']"
+      [classInput]="['sm:w-[24rem]', 'lg:w-[30rem]']"
+      name="Nama-Institusi"
+      type="text"
+      placeholder="Type here..."
+    />
+    <Input-form
+      [classname]="['sm:flex-row', 'sm:mb-5']"
+      [classInput]="['sm:w-[24rem]', 'lg:w-[30rem]']"
+      name="Jurusan"
+      type="text"
+      placeholder="Type here..."
+    />
+  </div>
+
+  <h1 class="text-lg mb-7 font-medium my-2.5 mt-8 text-blue-600">
+    KEPEGAWAIAN
+  </h1>
+  <div class="flex flex-col gap-y-2.5">
+    <Input-form
+      [classname]="['sm:flex-row', 'sm:mb-5']"
+      [classInput]="['sm:w-[24rem]', 'lg:w-[30rem]']"
+      name="Nik-Karyawan"
+      type="number"
+      placeholder="Type here..."
+    />
+    <app-input-dropdown name="Divisi" [options]="this.data.divisi" />
+    <app-input-dropdown name="Resource" [options]="this.data.resource" />
+    <app-input-dropdown name="Posisi" [options]="this.data.posisi" />
+    <app-input-dropdown
+      name="Status-Karyawan"
+      [options]="this.data.statusKaryawan"
+    />
+    <app-input-dropdown
+      name="Penempatan-Kerja"
+      [options]="this.data.penempatanKerja"
+    />
+    <Input-form
+      [classname]="['sm:flex-row', 'sm:mb-5']"
+      [classInput]="['sm:w-[24rem]', 'lg:w-[30rem]']"
+      name="Tanggal-Bergabung"
+      type="date"
+    />
+    <app-input-dropdown
+      name="User-Role-Aplikasi"
+      [options]="this.data.userRoleAplikasi"
+    />
+  </div>
+
+  <button
+    type="submit"
+    class="py-1.5 md:py-2.5 px-5 md:px-10 bg-blue-600 mt-9 mb-5 rounded-full text-white"
+  >
+    Submit
+  </button>
+</form>

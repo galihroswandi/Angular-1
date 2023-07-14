@@ -17,6 +17,9 @@ import { HomePage } from './Components/Pages/Home/Home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginPage } from './Components/Pages/Login/Login.component';
 import { AuthComponent } from './Components/Templates/auth/auth.template.component';
+import { AddEmployeComponent } from './Components/Pages/add-employe/add-employe.component';
+import { FormEmployeeComponent } from './Components/Fragments/form-employee/form-employee.component';
+import { InputDropdownComponent } from './Components/Elements/input-dropdown/input-dropdown.component';
 
 @NgModule({
   imports: [
@@ -39,6 +42,9 @@ import { AuthComponent } from './Components/Templates/auth/auth.template.compone
     HomePage,
     LoginPage,
     AuthComponent,
+    AddEmployeComponent,
+    FormEmployeeComponent,
+    InputDropdownComponent,
   ],
 
   providers: [],
