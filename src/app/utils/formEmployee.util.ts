@@ -149,58 +149,88 @@ export class EmployeeUtil {
     );
   }
 
-  dataPost(event: any) {
+  dataPost(event: any, loading: boolean) {
     const token = this.cookie.getCookies();
     if (!token.accessToken) {
       alert('Silahkan login terlebih dahulu');
     }
 
+    const errors = [];
+
     const data = {
       karyawanId:
-        event.target.elements[this.data.nameInput.name1].value.toString(),
+        event.target.elements[this.data.nameInput.name1].value.toString() ||
+        errors.push('User ID'),
       namaLengkap:
-        event.target.elements[this.data.nameInput.name2].value.toString(),
+        event.target.elements[this.data.nameInput.name2].value.toString() ||
+        errors.push('Nama Lengkap'),
       tempatLahir:
-        event.target.elements[this.data.nameInput.name3].value.toString(),
+        event.target.elements[this.data.nameInput.name3].value.toString() ||
+        errors.push('Tempat Lahir'),
       tglLahir:
-        event.target.elements[this.data.nameInput.name4].value.toString(),
-      email: event.target.elements[this.data.nameInput.name5].value.toString(),
+        event.target.elements[this.data.nameInput.name4].value.toString() ||
+        errors.push('Tanggal Lahir'),
+      email:
+        event.target.elements[this.data.nameInput.name5].value.toString() ||
+        errors.push('Alamat Email'),
       telegramId:
-        event.target.elements[this.data.nameInput.name6].value.toString(),
+        event.target.elements[this.data.nameInput.name6].value.toString() ||
+        errors.push('ID Telegram'),
       nomorTelepon:
-        event.target.elements[this.data.nameInput.name7].value.toString(),
+        event.target.elements[this.data.nameInput.name7].value.toString() ||
+        errors.push('Nomor Telepon'),
       jenisIdentitas:
-        event.target.elements[this.data.nameInput.name8].value.toString(),
+        event.target.elements[this.data.nameInput.name8].value.toString() ||
+        errors.push('Jenis Identitas'),
       nomorIdentitas:
-        event.target.elements[this.data.nameInput.name9].value.toString(),
+        event.target.elements[this.data.nameInput.name9].value.toString() ||
+        errors.push('Nomor Identitas'),
       statusPernikahan:
-        event.target.elements[this.data.nameInput.name10].value.toString(),
+        event.target.elements[this.data.nameInput.name10].value.toString() ||
+        errors.push('Status Pernikahan'),
       alamatKtp:
-        event.target.elements[this.data.nameInput.name11].value.toString(),
+        event.target.elements[this.data.nameInput.name11].value.toString() ||
+        errors.push('Alamat Sesuai KTP'),
       pendidikanAkhir:
-        event.target.elements[this.data.nameInput.name12].value.toString(),
+        event.target.elements[this.data.nameInput.name12].value.toString() ||
+        errors.push('Pendidikan Akhir'),
       namaInstitusi:
-        event.target.elements[this.data.nameInput.name13].value.toString(),
+        event.target.elements[this.data.nameInput.name13].value.toString() ||
+        errors.push('Nama Institusi'),
       jurusan:
-        event.target.elements[this.data.nameInput.name14].value.toString(),
+        event.target.elements[this.data.nameInput.name14].value.toString() ||
+        errors.push('Jurusan'),
       nikKaryawan:
-        event.target.elements[this.data.nameInput.name15].value.toString(),
+        event.target.elements[this.data.nameInput.name15].value.toString() ||
+        errors.push('Nik Karyawan'),
       divisi:
-        event.target.elements[this.data.nameInput.name16].value.toString(),
+        event.target.elements[this.data.nameInput.name16].value.toString() ||
+        errors.push('Divisi'),
       resource:
-        event.target.elements[this.data.nameInput.name17].value.toString(),
+        event.target.elements[this.data.nameInput.name17].value.toString() ||
+        errors.push('Resource'),
       posisi:
-        event.target.elements[this.data.nameInput.name18].value.toString(),
+        event.target.elements[this.data.nameInput.name18].value.toString() ||
+        errors.push('Posisi'),
       statusKaryawan:
-        event.target.elements[this.data.nameInput.name19].value.toString(),
+        event.target.elements[this.data.nameInput.name19].value.toString() ||
+        errors.push('Status Karyawan'),
       penempatan:
-        event.target.elements[this.data.nameInput.name20].value.toString(),
+        event.target.elements[this.data.nameInput.name20].value.toString() ||
+        errors.push('Penempatan Kerja'),
       tglBergabung:
-        event.target.elements[this.data.nameInput.name21].value.toString(),
+        event.target.elements[this.data.nameInput.name21].value.toString() ||
+        errors.push('Tanggal Bergabung'),
       userRole:
-        event.target.elements[this.data.nameInput.name22].value.toString(),
+        event.target.elements[this.data.nameInput.name22].value.toString() ||
+        errors.push('User Role Aplikasi'),
       accessToken: token.accessToken,
     };
+
+    if (errors.length > 0) {
+      alert(`Error Field Tidak boleh kosong :\n${errors.join('\n')}`);
+      return false;
+    }
 
     return data;
   }
