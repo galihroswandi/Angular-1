@@ -6,7 +6,7 @@ export class CookiesUtils {
   getCookies() {
     const cookieToken = Cookies.get('access_token');
     const data = {
-      accessToken: cookieToken,
+      access_token: cookieToken,
     };
     return data;
   }

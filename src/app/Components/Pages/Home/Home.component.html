@@ -1,7 +1,49 @@
-<main class="min-w-full flex gap-x-10">
-  <button type="button" (click)="handleGetUsers()" class="hover:underline">
-    Get Users
-  </button>
-  <button class="hover:underline" (click)="handleLogout()">Logout</button>
-  <a routerLink="/add-employe" class="hover:underline">Add Employe</a>
-</main>
+<div class="wrapper relative md:flex min-h-screen pb-24 md:pb-0">
+  <app-navbar />
+  <app-navbar-slide />
+  <main class="max-w-[100%] lg:ml-10 w-full md:pb-10 md:pl-56 lg:pl-48">
+    <header
+      class="bg-blue-600 py-2.5 px-5 max-w-[95%] mx-auto mt-5 min-h-[9rem] md:min-h-[4rem] rounded-md bg-[url('./assets/bg-tagline.png')] bg-cover bg-center"
+    >
+      <h1 class="text-white text-xl font-semibold leading-3 mt-3">
+        Welcome Back
+      </h1>
+      <span class="text-xs text-blue-50 leading-3">Nice to meet you</span>
+    </header>
+    <section class="md:grid md:grid-cols-2 md:gap-x-5 mx-auto max-w-[95%]">
+      <section
+        class="py-2.5 px-5 max-w-[100%] w-full flex items-center gap-x-6 mx-auto mt-5 min-h-[9rem] bg-blue-50 rounded-md"
+      >
+        <img
+          src="./assets/icons/People Dark.svg"
+          alt="User Icon"
+          class="w-20"
+        />
+        <h1 class="flex flex-col items-start gap-y-1">
+          <span class="text-2xl font-semibold text-slate-700"
+            >Total 330000</span
+          >
+          <span class="text-sm text-slate-700">Pengguna / Users</span>
+        </h1>
+      </section>
+      <section
+        class="py-2.5 px-5 max-w-[100%] w-full flex items-center gap-x-6 mx-auto mt-5 min-h-[9rem] bg-blue-50 rounded-md"
+      >
+        <img src="./assets/icons/Employees.svg" alt="User Icon" class="w-20" />
+        <h1 class="flex flex-col items-start gap-y-1">
+          <span class="text-2xl font-semibold text-slate-700">Total 2000</span>
+          <span class="text-sm text-slate-700">Karyawan / Employees</span>
+        </h1>
+      </section>
+    </section>
+
+    <div class="mx-auto max-w-[95%]">
+      <h1 class="mt-8 text-2xl text-slate-700">Users / Pengguna</h1>
+    </div>
+    <section
+      class="p-6 mt-5 max-w-[95%] w-full bg-blue-50 mx-auto rounded-md overflow-hidden"
+    >
+      <app-table [dtoptions]="this.dtoptions" [data]="this.data" />
+    </section>
+  </main>
+</div>

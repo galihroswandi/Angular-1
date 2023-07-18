@@ -1,0 +1,97 @@
+<div class="wrapper relative md:flex min-h-screen pb-20 md:pb-0">
+  <app-navbar />
+  <app-navbar-slide />
+  <main class="max-w-[100%] lg:ml-10 w-full md:pb-10 md:pl-56 lg:pl-48">
+    <div class="mx-auto max-w-[95%]">
+      <h1 class="mt-8 text-2xl text-slate-700">Karyawan / Employee</h1>
+    </div>
+    <section
+      class="p-6 mt-5 max-w-[95%] w-full bg-blue-50 mx-auto rounded-md overflow-hidden"
+    >
+      <table
+        datatable
+        [dtOptions]="this.dtoptions"
+        class="row-border hover"
+        *ngIf="this.data.length > 0"
+      >
+        <thead>
+          <tr class="bg-blue-600 text-white">
+            <th>ID-Karyawan</th>
+            <th>Nama Lengkap</th>
+            <th>Tempat Lahir</th>
+            <th>Tanggal Lahir</th>
+            <th>Email</th>
+            <th>Telegram ID</th>
+            <th>Nomor Telepon</th>
+            <th>Jenis Identitas</th>
+            <th>Nomor Identitas</th>
+            <th>Status Pernikahan</th>
+            <th>Alamat KTP</th>
+            <th>Pendidikan Akhir</th>
+            <th>Nama Insitusi</th>
+            <th>Jurusan</th>
+            <th>NIK Karyawan</th>
+            <th>Divisi</th>
+            <th>Resource</th>
+            <th>Posisi</th>
+            <th>Status Karyawan</th>
+            <th>Penempatan</th>
+            <th>Tanggal Bergabung</th>
+            <th>User Role</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of this.data[0]">
+            <td>{{ user.karyawanId }}</td>
+            <td>{{ user.namaLengkap }}</td>
+            <td>{{ user.tempatLahir }}</td>
+            <td>{{ user.tglLahir }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.telegramId }}</td>
+            <td>{{ user.nomorTelepon }}</td>
+            <td>{{ user.jenisIdentitas }}</td>
+            <td>{{ user.nomorIdentitas }}</td>
+            <td>{{ user.statusPernikahan }}</td>
+            <td>{{ user.alamatKtp }}</td>
+            <td>{{ user.pendidikanAkhir }}</td>
+            <td>{{ user.namaInstitusi }}</td>
+            <td>{{ user.jurusan }}</td>
+            <td>{{ user.nikKaryawan }}</td>
+            <td>{{ user.divisi }}</td>
+            <td>{{ user.resource }}</td>
+            <td>{{ user.posisi }}</td>
+            <td>{{ user.statusKaryawan }}</td>
+            <td>{{ user.penempatan }}</td>
+            <td>{{ user.tglBergabung }}</td>
+            <td>{{ user.userRole }}</td>
+            <td class="flex flex-row items-center gap-3">
+              <a
+                [routerLink]="['/edit-employee', user.karyawanId]"
+                class="bg-blue-600 py-1 px-2 text-xs text-white rounded-md mr-2"
+              >
+                Ubah
+              </a>
+              <a
+                [routerLink]="['/delete-employee', user.karyawanId]"
+                class="bg-red-600 py-1 px-2 text-xs text-white rounded-md"
+              >
+                Hapus
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="flex justify-end mt-6 pr-5">
+        <a
+          [routerLink]="['/add-employee']"
+          class="bg-blue-600 text-white py-2 px-4 rounded-md flex items-center gap-x-2"
+        >
+          <img src="./assets/icons/plus-white.svg" alt="Plus Icon" />
+          <span>Tambah Karyawan</span>
+        </a>
+      </div>
+    </section>
+  </main>
+</div>

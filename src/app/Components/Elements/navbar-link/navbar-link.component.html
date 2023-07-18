@@ -1,0 +1,8 @@
+<a
+  [href]="this.pathLink"
+  [class]="this.getClassLink()"
+  (click)="handleClick($event)"
+>
+  <img [src]="this.iconSrc" [alt]="this.linkTitle" class="6" />
+  <span>{{ this.linkTitle }}</span>
+</a>

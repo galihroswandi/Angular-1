@@ -1,0 +1,39 @@
+<table
+  datatable
+  [dtOptions]="this.dtoptions"
+  class="row-border hover"
+  *ngIf="this.data.length > 0"
+>
+  <thead>
+    <tr class="bg-blue-600 text-white">
+      <th>ID</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Aksi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of this.data[0]">
+      <td>{{ user.id }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.role }}</td>
+      <td class="flex flex-row items-center gap-3">
+        <a
+          href="#"
+          class="bg-blue-600 py-1 px-2 text-xs text-white rounded-md mr-2"
+        >
+          <img
+            src="./assets/icons/edit-white.svg"
+            alt="Edit Icon"
+            class="hidden"
+          />
+          Ubah
+        </a>
+        <a href="#" class="bg-red-600 py-1 px-2 text-xs text-white rounded-md">
+          <!-- <img src="./assets/icons/edit-white.svg" alt="Edit Icon" /> -->
+          Hapus
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>

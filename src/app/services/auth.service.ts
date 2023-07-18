@@ -22,10 +22,22 @@ export class AuthServices {
   }
 
   logout(): Promise<any> {
-    return axios.post(`${this.apiUrl}/logout`, this.getCookies.getCookies());
+    return axios.post(
+      `${this.apiUrl}/logout`,
+      {},
+      {
+        headers: {
+          Authorization: this.getCookies.getCookies().access_token,
+        },
+      }
+    );
   }
 
   getUser() {
-    return axios.post(`${this.apiUrl}/user`, this.getCookies.getCookies());
+    return axios.get(`${this.apiUrl}/user`, {
+      headers: {
+        Authorization: this.getCookies.getCookies().access_token,
+      },
+    });
   }
 }

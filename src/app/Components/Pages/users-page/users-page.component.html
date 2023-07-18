@@ -1,0 +1,23 @@
+<div class="wrapper relative md:flex min-h-screen pb-20 md:pb-0">
+  <app-navbar />
+  <app-navbar-slide />
+  <main class="max-w-[100%] lg:ml-10 w-full md:pb-10 md:pl-56 lg:pl-48">
+    <div class="mx-auto max-w-[95%]">
+      <h1 class="mt-8 text-2xl text-slate-700">Users / Pengguna</h1>
+    </div>
+    <section
+      class="p-6 mt-5 max-w-[95%] w-full bg-blue-50 mx-auto rounded-md overflow-hidden"
+    >
+      <app-table [dtoptions]="this.dtoptions" [data]="this.data" />
+      <div class="flex justify-end mt-6 pr-5">
+        <a
+          href="#"
+          class="bg-blue-600 text-white py-2 px-4 rounded-md flex items-center gap-x-2"
+        >
+          <img src="./assets/icons/plus-white.svg" alt="Plus Icon" />
+          <span>Tambah User</span>
+        </a>
+      </div>
+    </section>
+  </main>
+</div>

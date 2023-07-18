@@ -29,6 +29,7 @@ export class FormEmployeeComponent {
       }
     } else {
       this.autUtils.loading = false;
+      this.autUtils.loading = false;
     }
   }
 }

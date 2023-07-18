@@ -151,7 +151,7 @@ export class EmployeeUtil {
 
   dataPost(event: any, loading: boolean) {
     const token = this.cookie.getCookies();
-    if (!token.accessToken) {
+    if (!token.access_token) {
       alert('Silahkan login terlebih dahulu');
     }
 
@@ -224,11 +224,11 @@ export class EmployeeUtil {
       userRole:
         event.target.elements[this.data.nameInput.name22].value.toString() ||
         errors.push('User Role Aplikasi'),
-      accessToken: token.accessToken,
     };
 
     if (errors.length > 0) {
       alert(`Error Field Tidak boleh kosong :\n${errors.join('\n')}`);
+      loading = false;
       return false;
     }
 

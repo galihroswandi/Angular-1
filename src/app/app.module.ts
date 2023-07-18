@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { DataTablesModule } from 'angular-datatables';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './Components/app.component';
@@ -20,6 +21,17 @@ import { AuthComponent } from './Components/Templates/auth/auth.template.compone
 import { AddEmployeComponent } from './Components/Pages/add-employe/add-employe.component';
 import { FormEmployeeComponent } from './Components/Fragments/form-employee/form-employee.component';
 import { InputDropdownComponent } from './Components/Elements/input-dropdown/input-dropdown.component';
+import { InputIdentitasComponent } from './Components/Fragments/input-identitas/input-identitas.component';
+import { InputPendidikanComponent } from './Components/Fragments/input-pendidikan/input-pendidikan.component';
+import { InputKepegawaianComponent } from './Components/Fragments/input-kepegawaian/input-kepegawaian.component';
+import { NavbarComponent } from './Components/Fragments/navbar/navbar.component';
+import { NavbarLinkComponent } from './Components/Elements/navbar-link/navbar-link.component';
+import { NavbarSlideComponent } from './Components/Fragments/navbar-slide/navbar-slide.component';
+import { NavbarSlideLinkComponent } from './Components/Elements/navbar-slide-link/navbar-slide-link.component';
+import { TableComponent } from './utils/table/table.component';
+import { UsersPageComponent } from './Components/Pages/users-page/users-page.component';
+import { EmployeePageComponent } from './Components/Pages/employee-page/employee-page.component';
+import { EditEmployeeComponent } from './Components/Pages/edit-employee/edit-employee.component';
 
 @NgModule({
   imports: [
@@ -27,6 +39,7 @@ import { InputDropdownComponent } from './Components/Elements/input-dropdown/inp
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
+    DataTablesModule,
   ],
   declarations: [
     AppComponent,
@@ -45,6 +58,17 @@ import { InputDropdownComponent } from './Components/Elements/input-dropdown/inp
     AddEmployeComponent,
     FormEmployeeComponent,
     InputDropdownComponent,
+    InputIdentitasComponent,
+    InputPendidikanComponent,
+    InputKepegawaianComponent,
+    NavbarComponent,
+    NavbarLinkComponent,
+    NavbarSlideComponent,
+    NavbarSlideLinkComponent,
+    TableComponent,
+    UsersPageComponent,
+    EmployeePageComponent,
+    EditEmployeeComponent,
   ],
 
   providers: [],

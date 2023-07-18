@@ -1,0 +1,44 @@
+<nav
+  id="target-navbar-slide"
+  class="fixed w-full top-0 z-10 bg-blue-50 h-screen pt-5 lg:w-[125%] translate-x-56 opacity-0 hidden transition-all duration-500 md:inline-block md:opacity-100 md:w-full md:translate-x-0 md:max-w-[14rem]"
+>
+  <a href="#" class="flex flex-col gap-y-1 items-center">
+    <img
+      src="./assets/Logo.png"
+      alt="Logo"
+      class="max-w-[5rem] rounded-md overflow-hidden"
+    />
+    <h1 class="font-semibold text-slate-700 text-2xl">Admin 123</h1>
+  </a>
+  <nav class="mt-10">
+    <div class="flex flex-col gap-y-8 max-w-[100%] px-10 mx-auto">
+      <app-navbar-slide-link
+        linkTitle="Dashboard"
+        iconSrc="./assets/icons/Home-Black.svg"
+        pathLink="/"
+      />
+      <app-navbar-slide-link
+        linkTitle="Users"
+        iconSrc="./assets/icons/People Dark.svg"
+        pathLink="/users"
+      />
+      <app-navbar-slide-link
+        linkTitle="Karyawan"
+        iconSrc="./assets/icons/Employees.svg"
+        pathLink="/employee"
+      />
+      <a
+        class="text-xl md:text-base font-normal text-left text-slate-700 flex items-center gap-x-4 border-b border-b-slate-200 pb-2 cursor-pointer"
+        id="navbar-slide-link"
+        (click)="handleLogout()"
+      >
+        <img
+          src="./assets/icons/logout.svg"
+          alt="Logout Icon"
+          class="w-6 lg:w-4"
+        />
+        <span>Logout</span>
+      </a>
+    </div>
+  </nav>
+</nav>

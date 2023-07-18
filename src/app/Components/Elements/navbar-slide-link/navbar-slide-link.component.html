@@ -1,0 +1,12 @@
+<a
+  [routerLink]="this.pathLink"
+  class="text-xl md:text-base font-normal text-left text-slate-700 flex items-center gap-x-4 border-b border-b-slate-200 pb-2 active."
+  id="navbar-slide-link"
+>
+  <img
+    [src]="this.iconSrc"
+    [alt]="this.linkTitle + 'Icon'"
+    class="w-6 lg:w-4"
+  />
+  <span>{{ this.linkTitle }}</span>
+</a>
