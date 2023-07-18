@@ -10,12 +10,12 @@
     >
       <table
         datatable
-        [dtOptions]="this.dtoptions"
+        [dtTrigger]="dtTrigger"
+        [dtOptions]="this.dtOptions"
         class="row-border hover"
-        *ngIf="this.data.length > 0"
       >
         <thead>
-          <tr class="bg-blue-600 text-white">
+          <tr class="bg-blue-600 text-white text-sm">
             <th>ID-Karyawan</th>
             <th>Nama Lengkap</th>
             <th>Tempat Lahir</th>
@@ -41,7 +41,7 @@
             <th>Aksi</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="text-sm">
           <tr *ngFor="let user of this.data[0]">
             <td>{{ user.karyawanId }}</td>
             <td>{{ user.namaLengkap }}</td>
@@ -66,12 +66,12 @@
             <td>{{ user.tglBergabung }}</td>
             <td>{{ user.userRole }}</td>
             <td>
-              <a
-                [routerLink]="['/edit-employee', user.karyawanId]"
-                class="bg-blue-600 py-1 px-2 text-xs text-white rounded-md mr-2"
+              <button
+                class="change bg-blue-600 py-1 px-2 text-xs text-white rounded-md mr-2"
+                [id]="user.karyawanId"
               >
                 Ubah
-              </a>
+              </button>
               <button
                 class="delete bg-red-600 py-1 px-2 text-xs text-white rounded-md"
                 [id]="user.karyawanId"

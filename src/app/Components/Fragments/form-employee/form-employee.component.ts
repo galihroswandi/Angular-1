@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { AuthUtil } from 'src/app/utils/auth.util';
 import { EmployeeUtil } from 'src/app/utils/formEmployee.util';
@@ -13,7 +13,8 @@ export class FormEmployeeComponent {
     private employeeService: EmployeeService,
     public employeeUtil: EmployeeUtil,
     public autUtils: AuthUtil,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   @Input() use: string = '';
@@ -55,5 +56,7 @@ export class FormEmployeeComponent {
         this.autUtils.loading = false;
       }
     }
+
+    this.router.navigate(['/employee']);
   }
 }

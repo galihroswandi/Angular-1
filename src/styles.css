@@ -11,15 +11,6 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-#DataTables_Table_0_length {
-  margin-bottom: 1.5rem;
-}
-
-#DataTables_Table_0_paginate,
-#DataTables_Table_0_info {
-  margin-top: 1rem;
-}
-
 #navbar-slide-link.active {
   color: #2563eb;
 }
