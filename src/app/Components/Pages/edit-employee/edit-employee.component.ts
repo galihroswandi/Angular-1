@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EmployeeService } from 'src/app/services/employee.service';
 import { CookiesUtils } from 'src/app/utils/cookies.util';
 
 @Component({
@@ -10,14 +11,23 @@ export class EditEmployeeComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private cookie: CookiesUtils,
-    private router: Router
+    private router: Router,
+    private employee: EmployeeService
   ) {}
+
+  data: Array<object> = [];
 
   ngOnInit(): void {
     if (!this.cookie.getCookies().access_token) {
       this.router.navigate(['/login']);
     }
     const paramValue = this.route.snapshot.paramMap.get('id');
-    console.log(paramValue);
+    if (!paramValue) this.router.navigate(['/employee']);
+  }
+
+  getEmployeeWhereID(id: string | null) {
+    this.employee.getEmployeeWhereID(id).then((data) => {
+      this.data.push(data.data.karyawan);
+    });
   }
 }

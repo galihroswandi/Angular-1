@@ -6,6 +6,7 @@
     [name]="this.employeeUtil.data.nameInput.name1"
     type="text"
     placeholder="Type here..."
+    value="{{ this.dataEdit[0] && this.dataEdit[0].karyawanId }}"
   />
   <Input-form
     [classname]="['sm:flex-row', 'sm:mb-5']"
@@ -13,6 +14,7 @@
     [name]="this.employeeUtil.data.nameInput.name2"
     type="text"
     placeholder="Type here..."
+    value="{{ this.dataEdit[0] && this.dataEdit[0].namaLengkap }}"
   />
   <Input-form
     [classname]="['sm:flex-row', 'sm:mb-5']"
@@ -20,6 +22,7 @@
     [name]="this.employeeUtil.data.nameInput.name3"
     type="text"
     placeholder="Type here..."
+    value="{{ this.dataEdit[0] && this.dataEdit[0].tempatLahir }}"
   />
   <Input-form
     [classname]="['sm:flex-row', 'sm:mb-5']"
@@ -27,6 +30,7 @@
     [name]="this.employeeUtil.data.nameInput.name4"
     type="date"
     placeholder="Type here..."
+    value="{{ this.dataEdit[0] && this.dataEdit[0].tglLahir }}"
   />
   <Input-form
     [classname]="['sm:flex-row', 'sm:mb-5']"
@@ -34,6 +38,7 @@
     [name]="this.employeeUtil.data.nameInput.name5"
     type="email"
     placeholder="Enter a valid email address"
+    value="{{ this.dataEdit[0] && this.dataEdit[0].email }}"
   />
   <Input-form
     [classname]="['sm:flex-row', 'sm:mb-5']"
@@ -41,6 +46,7 @@
     [name]="this.employeeUtil.data.nameInput.name6"
     type="text"
     placeholder="Type here..."
+    value="{{ this.dataEdit[0] && this.dataEdit[0].telegramId }}"
   />
   <Input-form
     [classname]="['sm:flex-row', 'sm:mb-5']"
@@ -48,10 +54,12 @@
     [name]="this.employeeUtil.data.nameInput.name7"
     type="number"
     placeholder="628xxxxxxx"
+    value="{{ this.dataEdit[0] && this.dataEdit[0].nomorTelepon }}"
   />
   <app-input-dropdown
     [name]="this.employeeUtil.data.nameInput.name8"
     [options]="this.employeeUtil.data.dataOptionForm.jenisIdentitas"
+    value="{{ this.dataEdit[0] && this.dataEdit[0].jenisIdentitas }}"
   />
   <Input-form
     [classname]="['sm:flex-row', 'sm:mb-5']"
@@ -59,18 +67,25 @@
     [name]="this.employeeUtil.data.nameInput.name9"
     type="number"
     placeholder="3xxxxxxx"
+    value="{{ this.dataEdit[0] && this.dataEdit[0].nomorIdentitas }}"
   />
   <app-input-dropdown
     [name]="this.employeeUtil.data.nameInput.name10"
     [options]="this.employeeUtil.data.dataOptionForm.statusPernikahan"
+    value="{{ this.dataEdit[0] && this.dataEdit[0].statusPernikahan }}"
   />
   <div class="flex flex-col sm:flex-row sm:justify-between sm:mb-5">
-    <label for="alamatKtp">Alamat Tinggal Sesuai KTP</label>
+    <label
+      for="alamatKtp"
+      class="capitalize text-sm font-medium text-slate-700 max-w-fit"
+      >Alamat Tinggal Sesuai KTP</label
+    >
     <textarea
       [name]="this.employeeUtil.data.nameInput.name11"
       id="alamatKtp"
       rows="4"
       class="border border-slate-700 py-1.5 md:py-2.5 lg:py-1.5 px-3 text-sm outline-none rounded-md text-slate-700 bg-slate-50 w-full sm:w-[24rem] lg:w-[30rem]"
+      value="{{ this.dataEdit[0] && this.dataEdit[0].alamatKtp }}"
     ></textarea>
   </div>
 </div>

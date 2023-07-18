@@ -26,4 +26,20 @@ export class EmployeeService {
       },
     });
   }
+
+  getEmployeeWhereID(id: string | null) {
+    return axios.get(`${this.API_URL}/karyawan/${id}`, {
+      headers: {
+        Authorization: this.cookies.getCookies().access_token,
+      },
+    });
+  }
+
+  updateEmployee(data: object, id: string) {
+    return axios.put(`${this.API_URL}/karyawan/${id}`, data, {
+      headers: {
+        Authorization: this.cookies.getCookies().access_token,
+      },
+    });
+  }
 }

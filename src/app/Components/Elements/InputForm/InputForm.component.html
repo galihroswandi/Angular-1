@@ -11,5 +11,16 @@
     [class]="getInputClass()"
     autocomplete="off"
     required
+    *ngIf="!value"
+  />
+  <input
+    [type]="type"
+    [id]="name"
+    [placeholder]="placeholder"
+    [class]="getInputClass()"
+    autocomplete="off"
+    required
+    *ngIf="value"
+    value="{{ value }}"
   />
 </div>

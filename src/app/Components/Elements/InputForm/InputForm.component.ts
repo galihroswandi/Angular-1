@@ -10,6 +10,7 @@ export class InputForm {
   @Input() placeholder: string = 'none';
   @Input() classname?: string[] = [];
   @Input() classInput?: string[] = [];
+  @Input() value?: string;
 
   getClassWrapper(): string[] {
     const classess: string[] = [

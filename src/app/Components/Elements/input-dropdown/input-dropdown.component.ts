@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
 export class InputDropdownComponent {
   @Input() name: string = '';
   @Input() options: object = {};
+  @Input() value: string = '';
 
   datas: string[] = [];
 
