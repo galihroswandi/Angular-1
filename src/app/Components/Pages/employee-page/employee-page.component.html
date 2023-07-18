@@ -65,19 +65,19 @@
             <td>{{ user.penempatan }}</td>
             <td>{{ user.tglBergabung }}</td>
             <td>{{ user.userRole }}</td>
-            <td class="flex flex-row items-center gap-3">
+            <td>
               <a
                 [routerLink]="['/edit-employee', user.karyawanId]"
                 class="bg-blue-600 py-1 px-2 text-xs text-white rounded-md mr-2"
               >
                 Ubah
               </a>
-              <a
-                [routerLink]="['/delete-employee', user.karyawanId]"
-                class="bg-red-600 py-1 px-2 text-xs text-white rounded-md"
+              <button
+                class="delete bg-red-600 py-1 px-2 text-xs text-white rounded-md"
+                [id]="user.karyawanId"
               >
                 Hapus
-              </a>
+              </button>
             </td>
           </tr>
         </tbody>

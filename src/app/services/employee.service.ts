@@ -42,4 +42,12 @@ export class EmployeeService {
       },
     });
   }
+
+  deleteEmployee(id: string) {
+    return axios.delete(`${this.API_URL}/karyawan/${id}`, {
+      headers: {
+        Authorization: this.cookies.getCookies().access_token,
+      },
+    });
+  }
 }
