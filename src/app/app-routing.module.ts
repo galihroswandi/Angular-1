@@ -6,7 +6,6 @@ import { AddEmployeComponent } from './Components/Pages/add-employe/add-employe.
 import { UsersPageComponent } from './Components/Pages/users-page/users-page.component';
 import { EmployeePageComponent } from './Components/Pages/employee-page/employee-page.component';
 import { EditEmployeeComponent } from './Components/Pages/edit-employee/edit-employee.component';
-import { RerenderComponent } from './rerender/rerender.component';
 
 @NgModule({
   imports: [
@@ -34,10 +33,6 @@ import { RerenderComponent } from './rerender/rerender.component';
       {
         path: 'users',
         component: UsersPageComponent,
-      },
-      {
-        path: 'rerender',
-        component: RerenderComponent,
       },
     ]),
   ],

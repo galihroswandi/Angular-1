@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
 import { EmployeeService } from 'src/app/services/employee.service';
-import { ConvertTimestamp } from 'src/app/utils/convertTimestampLocal';
 import { CookiesUtils } from 'src/app/utils/cookies.util';
 
 @Component({
@@ -22,7 +21,6 @@ export class EmployeePageComponent implements AfterViewInit, OnInit {
 
   constructor(
     private employee: EmployeeService,
-    public convertTimestamp: ConvertTimestamp,
     private cookie: CookiesUtils,
     private router: Router,
     private renderer: Renderer2
@@ -66,8 +64,10 @@ export class EmployeePageComponent implements AfterViewInit, OnInit {
   }
 
   async deleteEmployee(idKaryawan: string) {
-    await this.employee.deleteEmployee(idKaryawan);
-    this.rerender();
+    if (confirm('Apakah yakin ingin menghapus ?')) {
+      await this.employee.deleteEmployee(idKaryawan);
+      this.getEmployee();
+    }
   }
 
   async getEmployee() {
