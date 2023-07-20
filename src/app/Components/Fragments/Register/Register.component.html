@@ -3,7 +3,7 @@
   id="target-slide-register"
 >
   <main class="mt-36 lg:max-w-[17.5rem] mx-auto">
-    <h1 class="text-3xl font-semibold text-slate-800">Register</h1>
+    <h1 class="text-3xl font-semibold text-slate-800">Register Admin</h1>
     <app-auth-template
       (onSubmit)="startRegister($event)"
       [name1]="this.name1"
@@ -12,6 +12,7 @@
       type2="password"
       titleButton="Register"
       errorText="Register Gagal"
+      errorEmail="Email tidak valid"
     />
     <p class="text-sm font-light text-center mt-2">
       Already have an account?

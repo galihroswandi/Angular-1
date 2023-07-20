@@ -48,6 +48,7 @@ export class FormEmployeeComponent {
           this.autUtils.loading = false;
           alert('Data berhasil ditambahkan');
           this.employeeUtil.removeValue(event);
+          this.router.navigate(['/employee']);
         } catch (err) {
           alert('Data gagal ditambahkan !');
         }
@@ -56,7 +57,5 @@ export class FormEmployeeComponent {
         this.autUtils.loading = false;
       }
     }
-
-    this.router.navigate(['/employee']);
   }
 }

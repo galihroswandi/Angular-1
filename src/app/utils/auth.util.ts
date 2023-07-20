@@ -5,11 +5,22 @@ export class AuthUtil {
   error = false;
   loading = false;
   disabled = false;
+  errorEmail = false;
 
-  actionAfterAuth(error: boolean, loading: boolean, disabled: boolean) {
+  actionAfterAuth(
+    error: boolean,
+    loading: boolean,
+    disabled: boolean,
+    errorEmail?: boolean
+  ) {
     this.loading = loading;
     this.disabled = disabled;
     this.error = error;
+    if (errorEmail) {
+      this.errorEmail = errorEmail;
+    } else {
+      this.errorEmail = false;
+    }
   }
 
   removeValueForm(event: any, ...nameInput1: string[]) {

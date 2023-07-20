@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthServices } from 'src/app/services/auth.service';
 import { AuthUtil } from 'src/app/utils/auth.util';
 import { Router } from '@angular/router';
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   selector: 'FormLogin',
   templateUrl: './Form.component.html',
 })
-export class FormLogin {
+export class FormLogin implements OnInit {
   name1 = 'email';
   name2 = 'password';
 
@@ -15,8 +15,10 @@ export class FormLogin {
     private auth: AuthServices,
     public authUtils: AuthUtil,
     private router: Router
-  ) {
-    this.authUtils.actionAfterAuth(false, false, false);
+  ) {}
+
+  ngOnInit(): void {
+    this.authUtils.actionAfterAuth(false, false, false, false);
   }
 
   onSubmit(event: any) {
@@ -30,14 +32,14 @@ export class FormLogin {
     this.auth
       .login(data)
       .then((res: any) => {
-        this.authUtils.actionAfterAuth(false, false, false);
+        this.authUtils.actionAfterAuth(false, false, false, false);
         this.authUtils.removeValueForm(event, this.name1, this.name2);
 
         alert('Login Berhasil');
         this.router.navigate(['/']);
       })
       .catch((err: object) => {
-        this.authUtils.actionAfterAuth(true, false, false);
+        this.authUtils.actionAfterAuth(true, false, false, false);
         this.authUtils.removeValueForm(event, this.name1, this.name2);
         console.log(err);
       });

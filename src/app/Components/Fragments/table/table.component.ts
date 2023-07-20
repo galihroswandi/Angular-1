@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import {
   AfterViewInit,
   Component,
@@ -7,9 +6,8 @@ import {
   ViewChild,
 } from '@angular/core';
 import { DataTableDirective } from 'angular-datatables';
-import { Subject } from 'rxjs';
-import { CookiesUtils } from 'src/app/utils/cookies.util';
-import { environments } from 'src/environments';
+import { Subject, catchError, throwError } from 'rxjs';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-table',
@@ -21,11 +19,10 @@ export class TableComponent implements OnDestroy, OnInit, AfterViewInit {
   dtElement: DataTableDirective;
   dtOption: DataTables.Settings = {};
   users: any = [];
-  private API_URL = environments.API_URL;
 
   dtTrigger: Subject<any> = new Subject<any>();
 
-  constructor(private httpClient: HttpClient, private cookie: CookiesUtils) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.dtOption = {
@@ -51,30 +48,31 @@ export class TableComponent implements OnDestroy, OnInit, AfterViewInit {
   }
 
   getUsers() {
-    this.httpClient
-      .get(`${this.API_URL}/user`, {
-        headers: {
-          //@ts-ignore
-          Authorization: this.cookie.getCookies().access_token,
-        },
-      })
+    this.userService
+      .getUsers()
+      .pipe(
+        catchError((err) => {
+          alert('Data gagal di load !');
+          return throwError(err);
+        })
+      )
       .subscribe((res) => {
         this.users.push(res);
-        this.dtTrigger.next(null);
       });
   }
 
   handleDelete(id: string) {
     if (confirm('Apakah yakin ingin menghapus ?')) {
-      this.httpClient
-        .delete(`${this.API_URL}/user/${id}`, {
-          headers: {
-            //@ts-ignore
-            Authorization: this.cookie.getCookies().access_token,
-          },
-        })
+      this.userService
+        .deleteUser(id)
+        .pipe(
+          catchError((err) => {
+            alert('Data gagal dihapus !');
+            return throwError(err);
+          })
+        )
         .subscribe((res) => {
-          alert('Data berhasil dihapus !');
+          alert('Data Berhasil dihapus !');
           this.rerender();
         });
     }

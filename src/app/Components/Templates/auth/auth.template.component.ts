@@ -12,6 +12,7 @@ export class AuthComponent {
   @Input() type2 = 'text';
   @Input() titleButton = 'noname';
   @Input() errorText = 'error';
+  @Input() erroEmail = 'error email';
 
   @Output() onSubmit = new EventEmitter<any>();
 

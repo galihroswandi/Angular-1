@@ -6,7 +6,8 @@ import { AddEmployeComponent } from './Components/Pages/add-employe/add-employe.
 import { UsersPageComponent } from './Components/Pages/users-page/users-page.component';
 import { EmployeePageComponent } from './Components/Pages/employee-page/employee-page.component';
 import { EditEmployeeComponent } from './Components/Pages/edit-employee/edit-employee.component';
-import { TestComponent } from './Components/test/test.component';
+import { EditUserComponent } from './Components/Pages/edit-user/edit-user.component';
+import { AddUserComponent } from './Components/Pages/add-user/add-user.component';
 
 @NgModule({
   imports: [
@@ -35,13 +36,10 @@ import { TestComponent } from './Components/test/test.component';
         path: 'users',
         component: UsersPageComponent,
       },
+      { path: 'users/add', component: AddUserComponent },
       {
         path: 'edituser/:id',
-        component: EditEmployeeComponent,
-      },
-      {
-        path: 'test',
-        component: TestComponent,
+        component: EditUserComponent,
       },
     ]),
   ],

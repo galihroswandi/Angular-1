@@ -8,7 +8,21 @@
   >
     <i class="text-slate-800 text-sm text-center">{{ this.errorText }}</i>
   </p>
-  <Input-form [name]="name1" [type]="type1" placeholder="example@gmail.com" />
+  <Input-form
+    [name]="name1"
+    [type]="type1"
+    placeholder="example@gmail.com"
+    *ngIf="!this.authUtils.errorEmail"
+  />
+  <Input-form
+    [name]="name1"
+    [type]="type1"
+    placeholder="example@gmail.com"
+    *ngIf="this.authUtils.errorEmail"
+  />
+  <p class="text-xs text-red-500" *ngIf="this.authUtils.errorEmail">
+    <i><b>Email Tidak Valid !</b></i>
+  </p>
   <Input-form [name]="name2" [type]="type2" placeholder="******" />
   <button
     [disabled]="this.authUtils.disabled"

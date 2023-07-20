@@ -1,0 +1,31 @@
+<form
+  (submit)="handleSubmit($event)"
+  class="md:max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto bg-slate-100 py-5 px-10 mt-10 rounded-lg"
+>
+  <div class="mb-5 -ml-6 -mt-1.5 w-fit hover:border p-2 rounded-full">
+    <a routerLink="/users">
+      <img src="./assets/icons/arrow-left.svg" alt="Back Icon" class="w-7" />
+    </a>
+  </div>
+  <Input-form
+    [classname]="['sm:flex-row', 'sm:mb-5']"
+    [classInput]="['sm:w-[24rem]', 'lg:w-[30rem]']"
+    name="email"
+    type="email"
+    placeholder="Type here..."
+  />
+  <Input-form
+    [classname]="['sm:flex-row', 'sm:mb-5']"
+    [classInput]="['sm:w-[24rem]', 'lg:w-[30rem]']"
+    name="password"
+    type="password"
+    placeholder="Type here..."
+  />
+  <button
+    type="submit"
+    class="py-1.5 md:py-2.5 px-5 md:px-10 bg-blue-600 mt-9 mb-5 rounded-full text-white"
+  >
+    <span *ngIf="!this.authUtils.loading">Submit</span>
+    <span *ngIf="this.authUtils.loading">Processing...</span>
+  </button>
+</form>

@@ -32,7 +32,9 @@ import { TableComponent } from './Components/Fragments/table/table.component';
 import { UsersPageComponent } from './Components/Pages/users-page/users-page.component';
 import { EmployeePageComponent } from './Components/Pages/employee-page/employee-page.component';
 import { EditEmployeeComponent } from './Components/Pages/edit-employee/edit-employee.component';
-import { TestComponent } from './Components/test/test.component';
+import { EditUserComponent } from './Components/Pages/edit-user/edit-user.component';
+import { FormUserComponent } from './Components/Fragments/form-user/form-user.component';
+import { AddUserComponent } from './Components/Pages/add-user/add-user.component';
 
 @NgModule({
   imports: [
@@ -70,7 +72,9 @@ import { TestComponent } from './Components/test/test.component';
     UsersPageComponent,
     EmployeePageComponent,
     EditEmployeeComponent,
-    TestComponent,
+    EditUserComponent,
+    FormUserComponent,
+    AddUserComponent,
   ],
 
   providers: [],
