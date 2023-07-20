@@ -8,7 +8,7 @@
   <select
     [name]="this.name"
     [id]="this.name"
-    class="border border-slate-700 py-1.5 md:py-2.5 lg:py-1.5 px-3 text-sm outline-none rounded-md text-slate-700 bg-slate-50 sm:w-[24rem] lg:w-[30rem]"
+    class="border border-slate-700 py-1.5 md:py-2.5 lg:py-1.5 px-3 text-sm outline-none rounded-md text-slate-700 bg-slate-50 sm:w-[24rem] md:w-[20rem] lg:w-[30rem]"
   >
     <option value="">-- Pilih {{ this.name.replace("-", " ") }} --</option>
     <ng-container *ngFor="let data of this.datas">

@@ -39,6 +39,7 @@ export class InputForm {
       'outline-none',
       'rounded-md',
       'text-slate-700',
+      'md:w-[20rem]',
     ];
     if (this.classInput) {
       return classess.concat(this.classInput);

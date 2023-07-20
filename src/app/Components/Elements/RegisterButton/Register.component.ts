@@ -9,7 +9,7 @@ export class RegisterButtonComponent {
   constructor(private authUtils: AuthUtil) {}
 
   showRegister() {
-    this.authUtils.actionAfterAuth(false, false, false);
+    this.authUtils.actionAfterAuth(false, false, false, false);
     const slideRegister = document.getElementById('target-slide-register');
     slideRegister?.classList.remove('hidden');
     setTimeout(() => {

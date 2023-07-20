@@ -45,4 +45,13 @@ export class UserService {
       },
     });
   }
+
+  updateUser(id: string, data: object) {
+    return this.http.put(`${this.API_URL}/user/${id}`, data, {
+      headers: {
+        //@ts-ignore
+        Authorization: this.cookieUtils.getCookies().access_token,
+      },
+    });
+  }
 }
