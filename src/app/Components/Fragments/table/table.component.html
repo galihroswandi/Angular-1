@@ -1,8 +1,8 @@
 <table
   datatable
-  [dtOptions]="this.dtoptions"
+  [dtOptions]="this.dtOption"
   class="row-border hover"
-  *ngIf="this.data.length > 0"
+  *ngIf="this.users.length > 0"
 >
   <thead>
     <tr class="bg-blue-600 text-white">
@@ -13,13 +13,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user of this.data[0]">
+    <tr *ngFor="let user of this.users[0]">
       <td>{{ user.id }}</td>
       <td>{{ user.email }}</td>
       <td>{{ user.role }}</td>
       <td class="flex flex-row items-center gap-3">
         <a
-          href="#"
+          [routerLink]="['/edituser', user.id]"
           class="bg-blue-600 py-1 px-2 text-xs text-white rounded-md mr-2"
         >
           <img
@@ -29,10 +29,12 @@
           />
           Ubah
         </a>
-        <a href="#" class="bg-red-600 py-1 px-2 text-xs text-white rounded-md">
-          <!-- <img src="./assets/icons/edit-white.svg" alt="Edit Icon" /> -->
+        <button
+          (click)="handleDelete(user.id)"
+          class="bg-red-600 py-1 px-2 text-xs text-white rounded-md"
+        >
           Hapus
-        </a>
+        </button>
       </td>
     </tr>
   </tbody>

@@ -28,10 +28,11 @@ import { NavbarComponent } from './Components/Fragments/navbar/navbar.component'
 import { NavbarLinkComponent } from './Components/Elements/navbar-link/navbar-link.component';
 import { NavbarSlideComponent } from './Components/Fragments/navbar-slide/navbar-slide.component';
 import { NavbarSlideLinkComponent } from './Components/Elements/navbar-slide-link/navbar-slide-link.component';
-import { TableComponent } from './utils/table/table.component';
+import { TableComponent } from './Components/Fragments/table/table.component';
 import { UsersPageComponent } from './Components/Pages/users-page/users-page.component';
 import { EmployeePageComponent } from './Components/Pages/employee-page/employee-page.component';
 import { EditEmployeeComponent } from './Components/Pages/edit-employee/edit-employee.component';
+import { TestComponent } from './Components/test/test.component';
 
 @NgModule({
   imports: [
@@ -69,6 +70,7 @@ import { EditEmployeeComponent } from './Components/Pages/edit-employee/edit-emp
     UsersPageComponent,
     EmployeePageComponent,
     EditEmployeeComponent,
+    TestComponent,
   ],
 
   providers: [],

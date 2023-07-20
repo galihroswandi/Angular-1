@@ -40,4 +40,12 @@ export class AuthServices {
       },
     });
   }
+
+  deleteUser(id: string) {
+    return axios.delete(`${this.apiUrl}/user/${id}`, {
+      headers: {
+        Authorization: this.getCookies.getCookies().access_token,
+      },
+    });
+  }
 }
