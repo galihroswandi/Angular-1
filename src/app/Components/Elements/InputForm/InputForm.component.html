@@ -4,16 +4,34 @@
     class="capitalize text-sm font-medium text-slate-700 max-w-fit"
     >{{ this.name.replace("-", " ") }}</label
   >
-  <input
-    [type]="type"
-    [id]="name"
-    [placeholder]="placeholder"
-    [class]="getInputClass()"
-    autocomplete="off"
-    required
-    *ngIf="!value"
-  />
 
+  <div *ngIf="this.errEmailUser || this.noteUser">
+    <input
+      [type]="type"
+      [id]="name"
+      [placeholder]="placeholder"
+      [class]="getInputClass()"
+      autocomplete="off"
+      required
+      *ngIf="!value"
+    />
+    <input
+      [type]="type"
+      [id]="name"
+      [placeholder]="placeholder"
+      [class]="getInputClass()"
+      autocomplete="off"
+      required
+      *ngIf="value"
+      value="{{ value }}"
+    />
+    <p class="text-xs mt-1 text-red-500 mb-4" *ngIf="this.errEmailUser">
+      <i><b>Email Tidak Valid !</b></i>
+    </p>
+    <p class="text-xs mt-1 text-slate-500 mb-4" *ngIf="this.noteUser">
+      <i>Note: Kosongkan saja jika tidak akan mengganti password</i>
+    </p>
+  </div>
   <input
     [type]="type"
     [id]="name"
@@ -21,7 +39,16 @@
     [class]="getInputClass()"
     autocomplete="off"
     required
-    *ngIf="value"
+    *ngIf="!value && !errEmailUser && !noteUser"
+  />
+  <input
+    [type]="type"
+    [id]="name"
+    [placeholder]="placeholder"
+    [class]="getInputClass()"
+    autocomplete="off"
+    required
+    *ngIf="value && !errEmailUser && !noteUser"
     value="{{ value }}"
   />
 </div>

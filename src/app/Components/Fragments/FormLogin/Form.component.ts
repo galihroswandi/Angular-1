@@ -16,7 +16,9 @@ export class FormLogin {
     private auth: AuthServices,
     public authUtils: AuthUtil,
     private router: Router
-  ) {}
+  ) {
+    this.authUtils.actionAfterAuth(false, false, false, false);
+  }
 
   onSubmit(event: any): boolean {
     event.preventDefault();

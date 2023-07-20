@@ -8,7 +8,7 @@ export class NavbarLinkComponent {
   @Input() classLink?: string[];
   @Input() iconSrc: string = '';
   @Input() linkTitle: string = 'Default';
-  @Input() pathLink: string = '#';
+  @Input() pathLink: string = '/';
 
   getClassLink() {
     const classes = [

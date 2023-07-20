@@ -10,11 +10,5 @@
   <app-input-identitas />
   <app-input-pendidikan />
   <app-input-kepegawaian />
-  <button
-    type="submit"
-    class="py-1.5 md:py-2.5 px-5 md:px-10 bg-blue-600 mt-9 mb-5 rounded-full text-white"
-  >
-    <span *ngIf="!this.autUtils.loading">Submit</span>
-    <span *ngIf="this.autUtils.loading">Processing...</span>
-  </button>
+  <app-button-form />
 </form>

@@ -11,6 +11,8 @@ export class InputForm {
   @Input() classname?: string[] = [];
   @Input() classInput?: string[] = [];
   @Input() value?: string;
+  @Input() noteUser?: boolean = false;
+  @Input() errEmailUser?: boolean = false;
 
   getClassWrapper(): string[] {
     const classess: string[] = [
@@ -39,7 +41,7 @@ export class InputForm {
       'outline-none',
       'rounded-md',
       'text-slate-700',
-      'md:w-[20rem]',
+      'w-full',
     ];
     if (this.classInput) {
       return classess.concat(this.classInput);

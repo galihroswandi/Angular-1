@@ -1,0 +1,7 @@
+<button
+  type="submit"
+  class="py-1.5 md:py-2 px-5 md:px-8 bg-blue-600 mt-9 mb-5 rounded-full text-white"
+>
+  <span *ngIf="!this.authUtils.loading">Submit</span>
+  <span *ngIf="this.authUtils.loading">Processing...</span>
+</button>

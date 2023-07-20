@@ -35,6 +35,7 @@ export class FormEmployeeComponent {
           this.autUtils.loading = false;
           alert('Data berhasil diubah');
           this.employeeUtil.removeValue(event);
+          this.router.navigate(['/employee']);
         } catch (err) {
           alert('Data gagal diubah !');
         }

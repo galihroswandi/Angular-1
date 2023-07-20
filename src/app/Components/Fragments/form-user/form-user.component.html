@@ -13,7 +13,8 @@
     name="email"
     type="email"
     placeholder="Type here..."
-    *ngIf="!this.edit && !this.dataUser"
+    *ngIf="!this.edit"
+    [errEmailUser]="this.authUtils.errorEmail"
   />
   <Input-form
     [classname]="['sm:flex-row', 'sm:mb-5', 'mb-3']"
@@ -23,20 +24,16 @@
     placeholder="Type here..."
     *ngIf="this.edit && this.dataUser"
     value="{{ this.dataUser && this.dataUser.email }}"
+    [errEmailUser]="this.authUtils.errorEmail"
   />
-  <p
-    class="text-xs md:text-left text-red-500 mb-4 md:-mt-4 md:ml-[7rem] lg:ml-[13.5rem]"
-    *ngIf="this.authUtils.errorEmail"
-  >
-    <i><b>Email Tidak Valid !</b></i>
-  </p>
+
   <Input-form
     [classname]="['sm:flex-row', 'sm:mb-5']"
     [classInput]="['sm:w-[24rem]', 'lg:w-[30rem]']"
     name="password"
     type="password"
     placeholder="Type here..."
-    *ngIf="!this.edit && !this.dataUser"
+    *ngIf="!this.edit"
   />
   <Input-form
     [classname]="['sm:flex-row', 'sm:mb-5']"
@@ -45,13 +42,14 @@
     type="password"
     placeholder="Type here..."
     *ngIf="this.edit && this.dataUser"
-    value="{{ this.dataUser && this.dataUser.password }}"
+    [noteUser]="true"
   />
-  <button
-    type="submit"
-    class="py-1.5 md:py-2.5 px-5 md:px-10 bg-blue-600 mt-9 mb-5 rounded-full text-white"
-  >
-    <span *ngIf="!this.authUtils.loading">Submit</span>
-    <span *ngIf="this.authUtils.loading">Processing...</span>
-  </button>
+  <input
+    type="hidden"
+    name="hiddenPassword"
+    *ngIf="this.edit && this.dataUser"
+    [value]="this.dataUser.password"
+  />
+
+  <app-button-form />
 </form>

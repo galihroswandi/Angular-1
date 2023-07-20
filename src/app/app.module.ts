@@ -35,6 +35,7 @@ import { EditEmployeeComponent } from './Components/Pages/edit-employee/edit-emp
 import { EditUserComponent } from './Components/Pages/edit-user/edit-user.component';
 import { FormUserComponent } from './Components/Fragments/form-user/form-user.component';
 import { AddUserComponent } from './Components/Pages/add-user/add-user.component';
+import { ButtonFormComponent } from './Components/Elements/button-form/button-form.component';
 
 @NgModule({
   imports: [
@@ -75,6 +76,7 @@ import { AddUserComponent } from './Components/Pages/add-user/add-user.component
     EditUserComponent,
     FormUserComponent,
     AddUserComponent,
+    ButtonFormComponent,
   ],
 
   providers: [],

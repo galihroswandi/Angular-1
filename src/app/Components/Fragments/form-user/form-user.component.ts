@@ -26,7 +26,6 @@ export class FormUserComponent {
 
   ngOnInit(): void {
     const idUser = this.route.snapshot.paramMap.get('id');
-    if (!idUser) this.router.navigate(['/users']);
 
     if (this.edit) {
       this.userService
@@ -38,7 +37,7 @@ export class FormUserComponent {
           })
         )
         .subscribe((res) => {
-          this.dataUser = (res as any).data;
+          this.dataUser = (res as any).user;
         });
     }
   }
