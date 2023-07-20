@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthServices } from 'src/app/services/auth.service';
 import { AuthUtil } from 'src/app/utils/auth.util';
 import { Router } from '@angular/router';
+import { emailRegex } from 'src/app/utils/emailRegex.util';
 
 @Component({
   selector: 'FormLogin',
   templateUrl: './Form.component.html',
 })
-export class FormLogin implements OnInit {
+export class FormLogin {
   name1 = 'email';
   name2 = 'password';
 
@@ -17,12 +18,13 @@ export class FormLogin implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {
-    this.authUtils.actionAfterAuth(false, false, false, false);
-  }
-
-  onSubmit(event: any) {
+  onSubmit(event: any): boolean {
     event.preventDefault();
+
+    if (!emailRegex.test(event.target.elements[this.name1].value)) {
+      this.authUtils.actionAfterAuth(false, false, false, true);
+      return false;
+    }
 
     const data: { email: string; password: string } = {
       email: event.target.elements[this.name1].value,
@@ -43,5 +45,6 @@ export class FormLogin implements OnInit {
         this.authUtils.removeValueForm(event, this.name1, this.name2);
         console.log(err);
       });
+    return true;
   }
 }
