@@ -3,7 +3,9 @@
   <app-input-dropdown
     [name]="this.employeeUtil.data.nameInput.name12"
     [options]="this.employeeUtil.data.dataOptionForm.pendidikanAkhir"
-    value="{{ this.dataEdit[0] && this.dataEdit[0].pendidikanAkhir }}"
+    value="{{
+      this.dataEdit.karyawan && this.dataEdit.karyawan.pendidikanAkhir
+    }}"
   />
   <Input-form
     [classname]="['sm:flex-row', 'sm:mb-5']"
@@ -11,7 +13,7 @@
     [name]="this.employeeUtil.data.nameInput.name13"
     type="text"
     placeholder="Type here..."
-    value="{{ this.dataEdit[0] && this.dataEdit[0].namaInstitusi }}"
+    value="{{ this.dataEdit.karyawan && this.dataEdit.karyawan.namaInstitusi }}"
   />
   <Input-form
     [classname]="['sm:flex-row', 'sm:mb-5']"
@@ -19,6 +21,6 @@
     [name]="this.employeeUtil.data.nameInput.name14"
     type="text"
     placeholder="Type here..."
-    value="{{ this.dataEdit[0] && this.dataEdit[0].jurusan }}"
+    value="{{ this.dataEdit.karyawan && this.dataEdit.karyawan.jurusan }}"
   />
 </div>

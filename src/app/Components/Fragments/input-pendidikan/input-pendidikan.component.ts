@@ -19,9 +19,9 @@ export class InputPendidikanComponent {
   ngOnInit(): void {
     const paramValue = this.route.snapshot.paramMap.get('id');
     if (paramValue) {
-      this.employeeService
-        .getEmployeeWhereID(paramValue)
-        .subscribe((res) => {});
+      this.employeeService.getEmployeeWhereID(paramValue).subscribe((res) => {
+        this.dataEdit = res;
+      });
     }
   }
 }

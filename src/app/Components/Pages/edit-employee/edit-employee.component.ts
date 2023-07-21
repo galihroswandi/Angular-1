@@ -23,6 +23,8 @@ export class EditEmployeeComponent implements OnInit {
     }
     const paramValue = this.route.snapshot.paramMap.get('id');
     if (!paramValue) this.router.navigate(['/employee']);
+
+    this.getEmployeeWhereID(paramValue);
   }
 
   getEmployeeWhereID(id: string | null) {

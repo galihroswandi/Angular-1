@@ -45,9 +45,11 @@ export class EmployeePageComponent implements OnInit {
   }
 
   async deleteEmployee(idKaryawan: string) {
-    await this.employee.deleteEmployee(idKaryawan);
-    alert('Data berhasil dihapus !');
-    this.rerender();
+    if (confirm('Apakah anda yakin ingin menghapus ?')) {
+      await this.employee.deleteEmployee(idKaryawan);
+      alert('Data berhasil dihapus !');
+      this.rerender();
+    }
   }
 
   getEmployee() {

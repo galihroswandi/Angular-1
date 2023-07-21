@@ -6,7 +6,7 @@
     [name]="this.employeeUtil.data.nameInput.name1"
     type="text"
     placeholder="Type here..."
-    value="{{ this.dataEdit[0] && this.dataEdit[0].karyawanId }}"
+    value="{{ this.dataEdit.karyawan && this.dataEdit.karyawan.karyawanId }}"
   />
   <Input-form
     [classname]="['sm:flex-row', 'sm:mb-5']"
@@ -14,7 +14,7 @@
     [name]="this.employeeUtil.data.nameInput.name2"
     type="text"
     placeholder="Type here..."
-    value="{{ this.dataEdit[0] && this.dataEdit[0].namaLengkap }}"
+    value="{{ this.dataEdit.karyawan && this.dataEdit.karyawan.namaLengkap }}"
   />
   <Input-form
     [classname]="['sm:flex-row', 'sm:mb-5']"
@@ -22,7 +22,7 @@
     [name]="this.employeeUtil.data.nameInput.name3"
     type="text"
     placeholder="Type here..."
-    value="{{ this.dataEdit[0] && this.dataEdit[0].tempatLahir }}"
+    value="{{ this.dataEdit.karyawan && this.dataEdit.karyawan.tempatLahir }}"
   />
   <Input-form
     [classname]="['sm:flex-row', 'sm:mb-5']"
@@ -30,7 +30,7 @@
     [name]="this.employeeUtil.data.nameInput.name4"
     type="date"
     placeholder="Type here..."
-    value="{{ this.dataEdit[0] && this.dataEdit[0].tglLahir }}"
+    value="{{ this.dataEdit.karyawan && this.dataEdit.karyawan.tglLahir }}"
   />
   <Input-form
     [classname]="['sm:flex-row', 'sm:mb-5']"
@@ -38,7 +38,7 @@
     [name]="this.employeeUtil.data.nameInput.name5"
     type="email"
     placeholder="Enter a valid email address"
-    value="{{ this.dataEdit[0] && this.dataEdit[0].email }}"
+    value="{{ this.dataEdit.karyawan && this.dataEdit.karyawan.email }}"
   />
   <Input-form
     [classname]="['sm:flex-row', 'sm:mb-5']"
@@ -46,7 +46,7 @@
     [name]="this.employeeUtil.data.nameInput.name6"
     type="text"
     placeholder="Type here..."
-    value="{{ this.dataEdit[0] && this.dataEdit[0].telegramId }}"
+    value="{{ this.dataEdit.karyawan && this.dataEdit.karyawan.telegramId }}"
   />
   <Input-form
     [classname]="['sm:flex-row', 'sm:mb-5']"
@@ -54,12 +54,14 @@
     [name]="this.employeeUtil.data.nameInput.name7"
     type="number"
     placeholder="628xxxxxxx"
-    value="{{ this.dataEdit[0] && this.dataEdit[0].nomorTelepon }}"
+    value="{{ this.dataEdit.karyawan && this.dataEdit.karyawan.nomorTelepon }}"
   />
   <app-input-dropdown
     [name]="this.employeeUtil.data.nameInput.name8"
     [options]="this.employeeUtil.data.dataOptionForm.jenisIdentitas"
-    value="{{ this.dataEdit[0] && this.dataEdit[0].jenisIdentitas }}"
+    value="{{
+      this.dataEdit.karyawan && this.dataEdit.karyawan.jenisIdentitas
+    }}"
   />
   <Input-form
     [classname]="['sm:flex-row', 'sm:mb-5']"
@@ -67,12 +69,16 @@
     [name]="this.employeeUtil.data.nameInput.name9"
     type="number"
     placeholder="3xxxxxxx"
-    value="{{ this.dataEdit[0] && this.dataEdit[0].nomorIdentitas }}"
+    value="{{
+      this.dataEdit.karyawan && this.dataEdit.karyawan.nomorIdentitas
+    }}"
   />
   <app-input-dropdown
     [name]="this.employeeUtil.data.nameInput.name10"
     [options]="this.employeeUtil.data.dataOptionForm.statusPernikahan"
-    value="{{ this.dataEdit[0] && this.dataEdit[0].statusPernikahan }}"
+    value="{{
+      this.dataEdit.karyawan && this.dataEdit.karyawan.statusPernikahan
+    }}"
   />
   <div class="flex flex-col sm:flex-row sm:justify-between sm:mb-5">
     <label
@@ -85,7 +91,7 @@
       id="alamatKtp"
       rows="4"
       class="border border-slate-700 py-1.5 md:py-2.5 lg:py-1.5 px-3 text-sm outline-none rounded-md text-slate-700 bg-slate-50 w-full sm:w-[24rem] lg:w-[30rem]"
-      value="{{ this.dataEdit[0] && this.dataEdit[0].alamatKtp }}"
+      value="{{ this.dataEdit.karyawan && this.dataEdit.karyawan.alamatKtp }}"
     ></textarea>
   </div>
 </div>
