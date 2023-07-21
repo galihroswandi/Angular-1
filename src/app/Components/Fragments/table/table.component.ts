@@ -1,31 +1,35 @@
-import {
-  AfterViewInit,
-  Component,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject, catchError, throwError } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
+import { CookiesUtils } from 'src/app/utils/cookies.util';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
 })
-export class TableComponent implements OnDestroy, OnInit, AfterViewInit {
+export class TableComponent implements OnInit {
   @ViewChild(DataTableDirective, { static: false })
   //@ts-ignore
   dtElement: DataTableDirective;
-  dtOption: DataTables.Settings = {};
-  users: any = [];
-
+  dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
 
-  constructor(private userService: UserService) {}
+  users: any = [];
+
+  constructor(
+    private userService: UserService,
+    private cookie: CookiesUtils,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.dtOption = {
+    if (!this.cookie.getCookies().access_token) {
+      this.router.navigate(['/login']);
+    }
+
+    this.dtOptions = {
       pagingType: 'full_numbers',
       responsive: true,
     };
@@ -33,33 +37,18 @@ export class TableComponent implements OnDestroy, OnInit, AfterViewInit {
     this.getUsers();
   }
 
-  ngAfterViewInit(): void {
-    this.dtTrigger.next(null);
-  }
-
-  ngOnDestroy(): void {
-    this.dtTrigger.unsubscribe();
-  }
-
   rerender(): void {
     this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
       dtInstance.destroy();
-      this.dtTrigger.next(null);
+      this.getUsers();
     });
   }
 
   getUsers() {
-    this.userService
-      .getUsers()
-      .pipe(
-        catchError((err) => {
-          alert('Data gagal di load !');
-          return throwError(err);
-        })
-      )
-      .subscribe((res) => {
-        this.users.push(res);
-      });
+    this.userService.getUsers().subscribe((res) => {
+      this.users = res;
+      this.dtTrigger.next(null);
+    });
   }
 
   handleDelete(id: string) {
