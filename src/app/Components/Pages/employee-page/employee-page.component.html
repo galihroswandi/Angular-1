@@ -16,6 +16,7 @@
       >
         <thead>
           <tr class="bg-blue-600 text-white text-sm">
+            <th>Aksi</th>
             <th>ID-Karyawan</th>
             <th>Nama Lengkap</th>
             <th>Tempat Lahir</th>
@@ -38,11 +39,26 @@
             <th>Penempatan</th>
             <th>Tanggal Bergabung</th>
             <th>User Role</th>
-            <th>Aksi</th>
           </tr>
         </thead>
         <tbody class="text-sm">
-          <tr *ngFor="let user of this.data[0]">
+          <tr *ngFor="let user of this.data.result">
+            <td class="flex items-center">
+              <a
+                [routerLink]="['/edit-employee', user.karyawanId]"
+                class="change bg-blue-600 py-1 px-2 text-xs text-white rounded-md mr-2"
+                [id]="user.karyawanId"
+              >
+                Ubah
+              </a>
+              <button
+                (click)="this.deleteEmployee(user.karyawanId)"
+                class="delete bg-red-600 py-1 px-2 text-xs text-white rounded-md"
+                [id]="user.karyawanId"
+              >
+                Hapus
+              </button>
+            </td>
             <td>{{ user.karyawanId }}</td>
             <td>{{ user.namaLengkap }}</td>
             <td>{{ user.tempatLahir }}</td>
@@ -65,21 +81,6 @@
             <td>{{ user.penempatan }}</td>
             <td>{{ user.tglBergabung }}</td>
             <td>{{ user.userRole }}</td>
-            <td>
-              <button
-                class="change bg-blue-600 py-1 px-2 text-xs text-white rounded-md mr-2"
-                [id]="user.karyawanId"
-              >
-                Ubah
-              </button>
-              <button
-                (click)="this.deleteEmployee(user.karyawanId)"
-                class="delete bg-red-600 py-1 px-2 text-xs text-white rounded-md"
-                [id]="user.karyawanId"
-              >
-                Hapus
-              </button>
-            </td>
           </tr>
         </tbody>
       </table>

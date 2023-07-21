@@ -15,7 +15,7 @@ export class EditEmployeeComponent implements OnInit {
     private employee: EmployeeService
   ) {}
 
-  data: Array<object> = [];
+  data: any = [];
 
   ngOnInit(): void {
     if (!this.cookie.getCookies().access_token) {
@@ -26,8 +26,8 @@ export class EditEmployeeComponent implements OnInit {
   }
 
   getEmployeeWhereID(id: string | null) {
-    this.employee.getEmployeeWhereID(id).then((data) => {
-      this.data.push(data.data.karyawan);
+    this.employee.getEmployeeWhereID(id).subscribe((res) => {
+      this.data = res;
     });
   }
 }

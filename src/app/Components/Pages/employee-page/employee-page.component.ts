@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnDestroy,
-  OnInit,
-  Renderer2,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
@@ -15,7 +9,7 @@ import { CookiesUtils } from 'src/app/utils/cookies.util';
   selector: 'app-employee-page',
   templateUrl: './employee-page.component.html',
 })
-export class EmployeePageComponent implements OnInit, OnDestroy {
+export class EmployeePageComponent implements OnInit {
   @ViewChild(DataTableDirective, { static: false })
   //@ts-ignore
   dtElement: DataTableDirective;
@@ -23,26 +17,13 @@ export class EmployeePageComponent implements OnInit, OnDestroy {
   constructor(
     private employee: EmployeeService,
     private cookie: CookiesUtils,
-    private router: Router,
-    private renderer: Renderer2
+    private router: Router
   ) {}
-  data: any[] = [];
+  data: any = [];
 
   dtOptions: DataTables.Settings = {};
 
-  dtTrigger: Subject<any> = new Subject();
-
-  ngAfterViewInit(): void {
-    this.renderer.listen('document', 'click', (event) => {
-      if (event.target.classList.contains('delete')) {
-        this.deleteEmployee(event.target.id);
-      } else if (event.target.classList.contains('change')) {
-        const karyawanId = event.target.id;
-        this.router.navigate(['/edit-employee', karyawanId]);
-      }
-    });
-    this.dtTrigger.next(null);
-  }
+  dtTrigger: Subject<any> = new Subject<any>();
 
   ngOnInit(): void {
     if (!this.cookie.getCookies().access_token) {
@@ -56,14 +37,10 @@ export class EmployeePageComponent implements OnInit, OnDestroy {
     this.getEmployee();
   }
 
-  ngOnDestroy(): void {
-    this.dtTrigger.unsubscribe();
-  }
-
   rerender(): void {
     this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
       dtInstance.destroy();
-      this.dtTrigger.next(null);
+      this.getEmployee();
     });
   }
 
@@ -73,9 +50,10 @@ export class EmployeePageComponent implements OnInit, OnDestroy {
     this.rerender();
   }
 
-  async getEmployee() {
-    const res = await this.employee.getEmployee();
-    this.data.push(res.data.result);
-    this.rerender();
+  getEmployee() {
+    this.employee.getEmployee().subscribe((res) => {
+      this.data = res;
+      this.dtTrigger.next(null);
+    });
   }
 }

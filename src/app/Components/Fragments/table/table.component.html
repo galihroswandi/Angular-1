@@ -6,17 +6,14 @@
 >
   <thead>
     <tr class="bg-blue-600 text-white">
+      <th>Aksi</th>
       <th>ID</th>
       <th>Email</th>
       <th>Role</th>
-      <th>Aksi</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let user of this.users[0]">
-      <td>{{ user.id }}</td>
-      <td>{{ user.email }}</td>
-      <td>{{ user.role }}</td>
       <td class="flex flex-row items-center gap-3">
         <a
           [routerLink]="['/edituser', user.id]"
@@ -36,6 +33,9 @@
           Hapus
         </button>
       </td>
+      <td>{{ user.id }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.role }}</td>
     </tr>
   </tbody>
 </table>

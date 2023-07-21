@@ -27,6 +27,7 @@ export class TableComponent implements OnDestroy, OnInit, AfterViewInit {
   ngOnInit(): void {
     this.dtOption = {
       pagingType: 'full_numbers',
+      responsive: true,
     };
 
     this.getUsers();

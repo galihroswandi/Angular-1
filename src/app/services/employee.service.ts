@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { environments } from 'src/environments';
 import { AuthoRization } from '../utils/headersAuthorization';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,10 @@ import { AuthoRization } from '../utils/headersAuthorization';
 export class EmployeeService {
   private API_URL = environments.API_URL;
 
-  constructor(private authorization: AuthoRization) {}
+  constructor(
+    private authorization: AuthoRization,
+    private httpClient: HttpClient
+  ) {}
 
   addEmployee(data: object) {
     return axios.post(
@@ -19,11 +23,14 @@ export class EmployeeService {
     );
   }
   getEmployee() {
-    return axios.get(`${this.API_URL}/karyawan`, this.authorization.headerAuth);
+    return this.httpClient.get(
+      `${this.API_URL}/karyawan`,
+      this.authorization.headerAuth
+    );
   }
 
   getEmployeeWhereID(id: string | null) {
-    return axios.get(
+    return this.httpClient.get(
       `${this.API_URL}/karyawan/${id}`,
       this.authorization.headerAuth
     );
