@@ -38,6 +38,7 @@ export class FormEmployeeComponent {
           this.router.navigate(['/employee']);
         } catch (err) {
           alert('Data gagal diubah !');
+          this.autUtils.loading = false;
         }
       }
     } else {
@@ -52,9 +53,9 @@ export class FormEmployeeComponent {
           this.router.navigate(['/employee']);
         } catch (err) {
           alert('Data gagal ditambahkan !');
+          this.autUtils.loading = false;
         }
       } else {
-        this.autUtils.loading = false;
         this.autUtils.loading = false;
       }
     }

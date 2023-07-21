@@ -73,6 +73,7 @@
                 Ubah
               </button>
               <button
+                (click)="this.deleteEmployee(user.karyawanId)"
                 class="delete bg-red-600 py-1 px-2 text-xs text-white rounded-md"
                 [id]="user.karyawanId"
               >

@@ -36,13 +36,18 @@
     *ngIf="!this.edit"
   />
   <Input-form
-    [classname]="['sm:flex-row', 'sm:mb-5']"
+    [classname]="['sm:flex-row', 'sm:mb-3']"
     [classInput]="['sm:w-[24rem]', 'lg:w-[30rem]']"
     name="password"
     type="password"
     placeholder="Type here..."
     *ngIf="this.edit && this.dataUser"
     [noteUser]="true"
+  />
+  <app-input-dropdown
+    name="role"
+    [options]="this.optionDropdown"
+    value="{{ this.dataUser && this.dataUser.role }}"
   />
   <input
     type="hidden"

@@ -1,6 +1,6 @@
 import {
-  AfterViewInit,
   Component,
+  OnDestroy,
   OnInit,
   Renderer2,
   ViewChild,
@@ -15,9 +15,10 @@ import { CookiesUtils } from 'src/app/utils/cookies.util';
   selector: 'app-employee-page',
   templateUrl: './employee-page.component.html',
 })
-export class EmployeePageComponent implements AfterViewInit, OnInit {
+export class EmployeePageComponent implements OnInit, OnDestroy {
   @ViewChild(DataTableDirective, { static: false })
-  dtElement: any = [];
+  //@ts-ignore
+  dtElement: DataTableDirective;
 
   constructor(
     private employee: EmployeeService,
@@ -34,8 +35,7 @@ export class EmployeePageComponent implements AfterViewInit, OnInit {
   ngAfterViewInit(): void {
     this.renderer.listen('document', 'click', (event) => {
       if (event.target.classList.contains('delete')) {
-        const idKaryawan = event.target.id;
-        this.deleteEmployee(idKaryawan);
+        this.deleteEmployee(event.target.id);
       } else if (event.target.classList.contains('change')) {
         const karyawanId = event.target.id;
         this.router.navigate(['/edit-employee', karyawanId]);
@@ -56,6 +56,10 @@ export class EmployeePageComponent implements AfterViewInit, OnInit {
     this.getEmployee();
   }
 
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
+  }
+
   rerender(): void {
     this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
       dtInstance.destroy();
@@ -64,10 +68,9 @@ export class EmployeePageComponent implements AfterViewInit, OnInit {
   }
 
   async deleteEmployee(idKaryawan: string) {
-    if (confirm('Apakah yakin ingin menghapus ?')) {
-      await this.employee.deleteEmployee(idKaryawan);
-      this.getEmployee();
-    }
+    await this.employee.deleteEmployee(idKaryawan);
+    alert('Data berhasil dihapus !');
+    this.rerender();
   }
 
   async getEmployee() {

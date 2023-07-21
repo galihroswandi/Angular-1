@@ -64,6 +64,7 @@ export class FormUserComponent {
     const data: User = {
       email: event.target.elements['email'].value,
       password: event.target.elements['password'].value,
+      role: event.target.elements['role'].value,
     };
 
     if (!this.edit) {

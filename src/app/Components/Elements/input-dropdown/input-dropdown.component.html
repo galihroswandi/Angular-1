@@ -12,7 +12,10 @@
   >
     <option value="">-- Pilih {{ this.name.replace("-", " ") }} --</option>
     <ng-container *ngFor="let data of this.datas">
-      <option [value]="data" [selected]="this.value === data">
+      <option
+        [value]="data"
+        [selected]="this.value.toLowerCase() === data.toLowerCase()"
+      >
         {{ data }}
       </option>
     </ng-container>

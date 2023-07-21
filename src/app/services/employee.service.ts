@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { environments } from 'src/environments';
-import { CookiesUtils } from '../utils/cookies.util';
+import { AuthoRization } from '../utils/headersAuthorization';
 
 @Injectable({
   providedIn: 'root',
@@ -9,45 +9,38 @@ import { CookiesUtils } from '../utils/cookies.util';
 export class EmployeeService {
   private API_URL = environments.API_URL;
 
-  constructor(private cookies: CookiesUtils) {}
+  constructor(private authorization: AuthoRization) {}
 
   addEmployee(data: object) {
-    return axios.post(`${this.API_URL}/karyawan`, data, {
-      headers: {
-        Authorization: this.cookies.getCookies().access_token,
-      },
-    });
+    return axios.post(
+      `${this.API_URL}/karyawan`,
+      data,
+      this.authorization.headerAuth
+    );
   }
   getEmployee() {
-    const cookies = this.cookies.getCookies();
-    return axios.get(`${this.API_URL}/karyawan`, {
-      headers: {
-        Authorization: cookies.access_token,
-      },
-    });
+    return axios.get(`${this.API_URL}/karyawan`, this.authorization.headerAuth);
   }
 
   getEmployeeWhereID(id: string | null) {
-    return axios.get(`${this.API_URL}/karyawan/${id}`, {
-      headers: {
-        Authorization: this.cookies.getCookies().access_token,
-      },
-    });
+    return axios.get(
+      `${this.API_URL}/karyawan/${id}`,
+      this.authorization.headerAuth
+    );
   }
 
   updateEmployee(data: object, id: string) {
-    return axios.put(`${this.API_URL}/karyawan/${id}`, data, {
-      headers: {
-        Authorization: this.cookies.getCookies().access_token,
-      },
-    });
+    return axios.put(
+      `${this.API_URL}/karyawan/${id}`,
+      data,
+      this.authorization.headerAuth
+    );
   }
 
   deleteEmployee(id: string) {
-    return axios.delete(`${this.API_URL}/karyawan/${id}`, {
-      headers: {
-        Authorization: this.cookies.getCookies().access_token,
-      },
-    });
+    return axios.delete(
+      `${this.API_URL}/karyawan/${id}`,
+      this.authorization.headerAuth
+    );
   }
 }
